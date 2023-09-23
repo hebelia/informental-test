@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="xOGCYi7oYQKyeMfSsS58XOtA5BldJERYZkoPseka">
+
+    <title>Informental</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="http://www.web.informental.com.ar/css/app.css">
+
+    <!-- Scripts -->
+    <script src="http://www.web.informental.com.ar/js/app.js" defer=""></script>
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="http://www.web.informental.com.ar/manifest.json">
+    <!-- Chrome for Android theme color -->
+    <meta name="theme-color" content="#000000">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="VinculaT">
+    <link rel="icon" sizes="512x512" href="/images/icons/icon-512x512.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="VinculaT">
+    <link rel="apple-touch-icon" href="/images/icons/icon-512x512.png">
+
+
+    <link href="/images/icons/splash-640x1136.png"
+        media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-750x1334.png"
+        media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1242x2208.png"
+        media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1125x2436.png"
+        media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-828x1792.png"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1242x2688.png"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1536x2048.png"
+        media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1668x2224.png"
+        media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1668x2388.png"
+        media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-2048x2732.png"
+        media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+
+    <!-- Tile for Win8 -->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/icons/icon-512x512.png">
+
+    <script type="text/javascript">
+        // Initialize the service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/serviceworker.js', {
+                scope: '.'
+            }).then(function (registration) {
+                // Registration was successful
+                console.log('Laravel PWA: ServiceWorker registration successful with scope: ', registration.scope);
+            }, function (err) {
+                // registration failed :(
+                console.log('Laravel PWA: ServiceWorker registration failed: ', err);
+            });
+        }
+    </script>
+</head>
+
+<body class="bg-white lg:bg-background h-screen overflow-y-hidden">
+    <div class="font-sans text-gray-900 antialiased ">
+        <div x-data="register()"
+            x-init="[$watch('isPro', (val) => getTherms('pro')), $watch('isInst', (val) => getTherms('inst')), $nextTick(() => { toggleType(userType) })]"
+            class=" min-h-full w-auto mt-3 lg:my-6 md:w-8/12 mx-auto px-7 justify-center py-20 max-h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-green-300 scrollbar-track-white scrollbar-thumb-rounded-full scrollbar-track-rounded-full lg:bg-white lg:rounded-lg lg:shadow-md">
+            <div class="flex justify-center">
+                <img src="http://www.web.informental.com.ar/img/logo-informental.jpg" alt="" class="w-auto h-40">
+            </div>
+            <div x-show="!isPro &amp;&amp; !isInst" class="flex align-center justify-center mt-10 md:mt-14 px-auto"
+                style="display: none;">
+                <div class="grid grid-rows-3 gap-3">
+                    <label class="block font-medium text-sm text-gray-700">
+                        Registrarse como:
+                    </label>
+                    <button type="button" class="btn btn-primary" @click="toggleType('isPro')">
+                        Profesional
+                    </button>
+                    <button type="button" class="btn btn-primary" @click="toggleType('isInst')">
+                        Institución
+                    </button>
+                </div>
+            </div>
+            <form x-show="isPro || isInst" method="POST" enctype="multipart/form-data"
+                action="http://www.web.informental.com.ar/register">
+                <input type="hidden" name="_token" value="xOGCYi7oYQKyeMfSsS58XOtA5BldJERYZkoPseka"> <input
+                    type="hidden" name="user_type" x-model="userType" id="user_type" value="isPro">
+                <template x-if="isPro">
+                    <section class="mb-8 mt-3">
+                        <div class="container px-3 md:px-6">
+                            <p class="text-text-500 text-lg font-medium w-full border-b-2 border-primary-100">Datos del
+                                Profesional <small class="text-gray-400 text-xs">(Datos visibles para las instituciones
+                                    y otros profesionales) <small class="text-red-300 float-right mt-1">(*)
+                                        Obligatorio</small></small></p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Nombre <small
+                                            class="text-xs float-right text-red-300 mt-1">(*)</small></label>
+                                    <input wire:model="name" class="input-base" placeholder="Nombre del profesional"
+                                        id="name" name="name" value="">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Apellido<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input wire:model="last_name" class="input-base"
+                                        placeholder="Apellido del profesional" id="last_name" name="last_name" value="">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Profesión<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <select x-show="!otherSpecial" name="profesion" id="profesion"
+                                        x-model="especialidad" x-on:change="toggleEspecialidad" class="input-base">
+                                        <option selected="" value="1">Psicólogo</option>
+                                        <option value="2">Psiquiatra</option>
+                                        <option value="3">Neurólogo</option>
+                                        <option value="4">Médico</option>
+                                        <option value="5">Acompañante Terpéutico</option>
+                                        <option value="6">Nutricionista</option>
+                                        <option value="7">Trabajador Social</option>
+                                        <option value="8">Psicopedagogo</option>
+                                        <option value="9">Fonoaudiólogo</option>
+                                        <option value="10">Terapista en discapacidades motoras y mentales</option>
+                                        <option value="11">Otra</option>
+                                    </select>
+                                    <div x-show="otherSpecial" class="mt-1 relative rounded-md shadow-sm">
+                                        <input type="text" x-model="especialidad" name="otherProfession"
+                                            class="input-base" placeholder="Otra profesión...">
+                                        <div class="absolute inset-y-1 right-3 flex items-center">
+                                            <svg enable-background="new 0 0 32 32" @click="cleanOtheProf"
+                                                class="h-5 w-5 cursor-pointer fill-current text-green-600 hover:fill-current hover:text-red-400"
+                                                fill="#121313" version="1.1" viewBox="0 0 32 32" xml:space="preserve"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <g>
+                                                    <path clip-rule="evenodd"
+                                                        d="M16,0C7.163,0,0,7.163,0,16c0,8.836,7.163,16,16,16   c8.836,0,16-7.163,16-16C32,7.163,24.836,0,16,0z M16,30C8.268,30,2,23.732,2,16C2,8.268,8.268,2,16,2s14,6.268,14,14   C30,23.732,23.732,30,16,30z"
+                                                        fill-rule="evenodd"></path>
+                                                    <path clip-rule="evenodd"
+                                                        d="M22.729,21.271l-5.268-5.269l5.238-5.195   c0.395-0.391,0.395-1.024,0-1.414c-0.394-0.39-1.034-0.39-1.428,0l-5.231,5.188l-5.309-5.31c-0.394-0.396-1.034-0.396-1.428,0   c-0.394,0.395-0.394,1.037,0,1.432l5.301,5.302l-5.331,5.287c-0.394,0.391-0.394,1.024,0,1.414c0.394,0.391,1.034,0.391,1.429,0   l5.324-5.28l5.276,5.276c0.394,0.396,1.034,0.396,1.428,0C23.123,22.308,23.123,21.667,22.729,21.271z"
+                                                        fill-rule="evenodd"></path>
+                                                </g>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Localidad<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input wire:model="city" class="input-base" placeholder="Localidad" id="city"
+                                        name="city" value="">
+                                </div>
+
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Provinca<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input wire:model="province" class="input-base" placeholder="Provincia"
+                                        id="province" name="province">
+                                </div>
+
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">País<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input wire:model="country" class="input-base" placeholder="País" id="country"
+                                        name="country">
+                                </div>
+                            </div>
+                            <p class="text-text-500 text-lg font-medium w-full border-b-2 border-primary-100 mt-3">Datos
+                                identificatorios y de contacto <small class="text-gray-400 text-xs">(Datos NO visibles
+                                    para las instituciones y otros profesionales) <small
+                                        class="text-red-300 float-right mt-1">(*) Obligatorio</small></small></p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">DNI<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input wire:model="dni" wire:keyup="validacion" class="input-base"
+                                        placeholder="DNI del profesional" id="dni" name="dni" value="">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">CUIT<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input wire:model="cuil" wire:keyup="validacion" class="input-base"
+                                        placeholder="CUIT del profesional" id="cuil" name="cuil" value="">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Fecha Nacimiento</label>
+                                    <input wire:model="birth_date" class="input-base" id="birth_date" name="birth_date"
+                                        type="date" max="2023-09-23" value="">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Teléfono<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input wire:model="phone" class="input-base" x-model="celphone"
+                                        placeholder="Característica y N° (sin 0 ni 15)" id="phone" name="phone"
+                                        value="">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Email<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input type="email" wire:model="email" x-model="email" class="input-base"
+                                        placeholder="Email del profesional" id="email" name="email" value="">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Sexo</label>
+                                    <div class="mt-2 ml-4">
+                                        <label class="radio">Masculino
+                                            <input wire:model.defer="gender" type="radio" value="M" checked="checked"
+                                                name="radio">
+                                            <span class="check"></span>
+                                        </label>
+                                        <label class="radio">Femenino
+                                            <input wire:model.defer="gender" type="radio" value="F" name="radio">
+                                            <span class="check"></span>
+                                        </label>
+                                        <label class="radio">No Binario
+                                            <input wire:model.defer="gender" type="radio" value="N" name="radio">
+                                            <span class="check"></span>
+                                        </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 gap-4 mt-2">
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Línea teórica</label>
+                                    <textarea name="linea_teor" id="linea_teor" cols="30" rows="5" class="input-base"
+                                        placeholder="Línea teórica del Profesional"></textarea>
+                                </div>
+                            </div>
+                            <p class="text-text-500 text-lg font-medium w-full border-b-2 border-primary-100 mt-3">Redes
+                                Sociales <small class="text-gray-400 text-xs">(Datos visibles para las instituciones y
+                                    otros profesionales)</small></p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">LinkedIn</label>
+                                    <input wire:model="linkedin" class="input-base" placeholder="LinkedIn" id="linkedin"
+                                        name="linkedin">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Facebook</label>
+                                    <input wire:model="facebook" class="input-base" placeholder="Facebook" id="facebook"
+                                        name="facebook">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Instagram</label>
+                                    <input wire:model="instagram" class="input-base" placeholder="Instagram"
+                                        id="instagram" name="instagram">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Twitter</label>
+                                    <input wire:model="twitter" class="input-base" placeholder="Twitter" id="twitter"
+                                        name="twitter">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">WhatsApp Empresarial</label>
+                                    <input wire:model="whatsapp" x-model="waText" class="input-base"
+                                        placeholder="WhatsApp Empresarial" id="whatsapp" name="whatsapp">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Sitio Web</label>
+                                    <input wire:model="website" class="input-base" placeholder="Sitio web" id="website"
+                                        name="website">
+                                </div>
+                            </div>
+                            <p class="text-text-500 text-lg font-medium w-full border-b-2 border-primary-100 mt-3">
+                                Usuario y Contraseña <small class="text-xs"><small
+                                        class="text-red-300 float-right mt-1">(*) Obligatorio</small></small></p>
+                            <div class="grid grid-col-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Usuario<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input readonly="" x-model="email" class="input-base cursor-not-allowed"
+                                        placeholder="Usuario" id="user" name="user">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Contraseña<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <div class="relative mt-1">
+                                        <div
+                                            class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-text-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="">
+                                            <input @keyup.debounce="checkpassword" x-model="password" class="input-icon"
+                                                placeholder="Contraseña" id="password" name="password"
+                                                :type="showPass ? 'password' : 'text'">
+                                            <div
+                                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 cursor-pointer">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300"
+                                                    fill="none" @click="showPass = !showPass"
+                                                    :class="{'hidden': !showPass, 'block':showPass }"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                                    </path>
+                                                </svg>
+
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300"
+                                                    fill="none" @click="showPass = !showPass"
+                                                    :class="{'block': !showPass, 'hidden':showPass }"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Repita Contraseña<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <div class="relative mt-1">
+                                        <div
+                                            class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-text-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="">
+                                            <input @keyup.debounce="checkpassword" x-model="confirmpassword"
+                                                class="input-icon" placeholder="Contraseña" id="repeatpassword"
+                                                name="repeatpassword" :type="showConfPass ? 'password' : 'text'">
+                                            <div
+                                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 cursor-pointer">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300"
+                                                    fill="none" @click="showConfPass = !showConfPass"
+                                                    :class="{'hidden': !showConfPass, 'block':showConfPass }"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                                    </path>
+                                                </svg>
+
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300"
+                                                    fill="none" @click="showConfPass = !showConfPass"
+                                                    :class="{'block': !showConfPass, 'hidden':showConfPass }"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div x-show="!passwordchecked" class="grid grid-cols-1 md:grid-cols-3 gap-0 mt-1">
+                                <div class="hidden md:block"></div>
+                                <div class="md:col-span-2 flex justify-end">
+                                    <span class="text-red-400 font-semibold text-xs" x-text="passwordmessage"></span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col my-3">
+                                <div class="flex flex-col items-center justify-center">
+                                    <label for="" class="text-base text-text-300">Avatar</label>
+                                    <!-- Show the image -->
+                                    <template x-if="imageUrl">
+                                        <label for="avatar">
+                                            <img :src="imageUrl"
+                                                class="object-cover rounded border border-gray-200 cursor-pointer"
+                                                style="width: 100px; height: 100px;">
+                                        </label>
+                                    </template>
+                                    <!-- Show the gray box when image is not available -->
+                                    <template x-if="!imageUrl">
+                                        <label for="avatar">
+                                            <div class="flex items-center justify-center border-2 border-dashed rounded border-gray-200 bg-gray-100 cursor-pointer hover:border-green-500 text-gray-300 hover:text-green-500"
+                                                style="width: 100px; height: 100px;">
+                                                <small>Tu foto Aquí</small>
+                                            </div>
+                                        </label>
+
+                                    </template>
+                                </div>
+                                <div class="hidden">
+                                    <!-- Image file selector -->
+                                    <input class="mt-2" type="file" name="avatar" id="avatar" accept="image/*"
+                                        @change="fileChosen">
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </template>
+
+                <section class="mb-8 mt-3">
+                    <div class="container px-3 md:px-6">
+                        <p class="text-text-500 text-lg font-medium w-full border-b-2 border-primary-100">Datos del
+                            Profesional <small class="text-gray-400 text-xs">(Datos visibles para las instituciones y
+                                otros profesionales) <small class="text-red-300 float-right mt-1">(*)
+                                    Obligatorio</small></small></p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Nombre <small
+                                        class="text-xs float-right text-red-300 mt-1">(*)</small></label>
+                                <input wire:model="name" class="input-base" placeholder="Nombre del profesional"
+                                    id="name" name="name" value="">
+                            </div>
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Apellido<small
+                                        class="text-xs float-right text-red-300">(*)</small></label>
+                                <input wire:model="last_name" class="input-base" placeholder="Apellido del profesional"
+                                    id="last_name" name="last_name" value="">
+                            </div>
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Profesión<small
+                                        class="text-xs float-right text-red-300">(*)</small></label>
+                                <select x-show="!otherSpecial" name="profesion" id="profesion" x-model="especialidad"
+                                    x-on:change="toggleEspecialidad" class="input-base">
+                                    <option selected="" value="1">Psicólogo</option>
+                                    <option value="2">Psiquiatra</option>
+                                    <option value="3">Neurólogo</option>
+                                    <option value="4">Médico</option>
+                                    <option value="5">Acompañante Terpéutico</option>
+                                    <option value="6">Nutricionista</option>
+                                    <option value="7">Trabajador Social</option>
+                                    <option value="8">Psicopedagogo</option>
+                                    <option value="9">Fonoaudiólogo</option>
+                                    <option value="10">Terapista en discapacidades motoras y mentales</option>
+                                    <option value="11">Otra</option>
+                                </select>
+                                <div x-show="otherSpecial" class="mt-1 relative rounded-md shadow-sm"
+                                    style="display: none;">
+                                    <input type="text" x-model="especialidad" name="otherProfession" class="input-base"
+                                        placeholder="Otra profesión...">
+                                    <div class="absolute inset-y-1 right-3 flex items-center">
+                                        <svg enable-background="new 0 0 32 32" @click="cleanOtheProf"
+                                            class="h-5 w-5 cursor-pointer fill-current text-green-600 hover:fill-current hover:text-red-400"
+                                            fill="#121313" version="1.1" viewBox="0 0 32 32" xml:space="preserve"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                                            <g>
+                                                <path clip-rule="evenodd"
+                                                    d="M16,0C7.163,0,0,7.163,0,16c0,8.836,7.163,16,16,16   c8.836,0,16-7.163,16-16C32,7.163,24.836,0,16,0z M16,30C8.268,30,2,23.732,2,16C2,8.268,8.268,2,16,2s14,6.268,14,14   C30,23.732,23.732,30,16,30z"
+                                                    fill-rule="evenodd"></path>
+                                                <path clip-rule="evenodd"
+                                                    d="M22.729,21.271l-5.268-5.269l5.238-5.195   c0.395-0.391,0.395-1.024,0-1.414c-0.394-0.39-1.034-0.39-1.428,0l-5.231,5.188l-5.309-5.31c-0.394-0.396-1.034-0.396-1.428,0   c-0.394,0.395-0.394,1.037,0,1.432l5.301,5.302l-5.331,5.287c-0.394,0.391-0.394,1.024,0,1.414c0.394,0.391,1.034,0.391,1.429,0   l5.324-5.28l5.276,5.276c0.394,0.396,1.034,0.396,1.428,0C23.123,22.308,23.123,21.667,22.729,21.271z"
+                                                    fill-rule="evenodd"></path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Localidad<small
+                                        class="text-xs float-right text-red-300">(*)</small></label>
+                                <input wire:model="city" class="input-base" placeholder="Localidad" id="city"
+                                    name="city" value="">
+                            </div>
+
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Provinca<small
+                                        class="text-xs float-right text-red-300">(*)</small></label>
+                                <input wire:model="province" class="input-base" placeholder="Provincia" id="province"
+                                    name="province">
+                            </div>
+
+                            <div class="">
+                                <label for="" class="text-base text-text-300">País<small
+                                        class="text-xs float-right text-red-300">(*)</small></label>
+                                <input wire:model="country" class="input-base" placeholder="País" id="country"
+                                    name="country">
+                            </div>
+                        </div>
+                        <p class="text-text-500 text-lg font-medium w-full border-b-2 border-primary-100 mt-3">Datos
+                            identificatorios y de contacto <small class="text-gray-400 text-xs">(Datos NO visibles para
+                                las instituciones y otros profesionales) <small
+                                    class="text-red-300 float-right mt-1">(*) Obligatorio</small></small></p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="">
+                                <label for="" class="text-base text-text-300">DNI<small
+                                        class="text-xs float-right text-red-300">(*)</small></label>
+                                <input wire:model="dni" wire:keyup="validacion" class="input-base"
+                                    placeholder="DNI del profesional" id="dni" name="dni" value="">
+                            </div>
+                            <div class="">
+                                <label for="" class="text-base text-text-300">CUIT<small
+                                        class="text-xs float-right text-red-300">(*)</small></label>
+                                <input wire:model="cuil" wire:keyup="validacion" class="input-base"
+                                    placeholder="CUIT del profesional" id="cuil" name="cuil" value="">
+                            </div>
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Fecha Nacimiento</label>
+                                <input wire:model="birth_date" class="input-base" id="birth_date" name="birth_date"
+                                    type="date" max="2023-09-23" value="">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Teléfono<small
+                                        class="text-xs float-right text-red-300">(*)</small></label>
+                                <input wire:model="phone" class="input-base" x-model="celphone"
+                                    placeholder="Característica y N° (sin 0 ni 15)" id="phone" name="phone" value="">
+                            </div>
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Email<small
+                                        class="text-xs float-right text-red-300">(*)</small></label>
+                                <input type="email" wire:model="email" x-model="email" class="input-base"
+                                    placeholder="Email del profesional" id="email" name="email" value="">
+                            </div>
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Sexo</label>
+                                <div class="mt-2 ml-4">
+                                    <label class="radio">Masculino
+                                        <input wire:model.defer="gender" type="radio" value="M" checked="checked"
+                                            name="radio">
+                                        <span class="check"></span>
+                                    </label>
+                                    <label class="radio">Femenino
+                                        <input wire:model.defer="gender" type="radio" value="F" name="radio">
+                                        <span class="check"></span>
+                                    </label>
+                                    <label class="radio">No Binario
+                                        <input wire:model.defer="gender" type="radio" value="N" name="radio">
+                                        <span class="check"></span>
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 gap-4 mt-2">
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Línea teórica</label>
+                                <textarea name="linea_teor" id="linea_teor" cols="30" rows="5" class="input-base"
+                                    placeholder="Línea teórica del Profesional"></textarea>
+                            </div>
+                        </div>
+                        <p class="text-text-500 text-lg font-medium w-full border-b-2 border-primary-100 mt-3">Redes
+                            Sociales <small class="text-gray-400 text-xs">(Datos visibles para las instituciones y otros
+                                profesionales)</small></p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="">
+                                <label for="" class="text-base text-text-300">LinkedIn</label>
+                                <input wire:model="linkedin" class="input-base" placeholder="LinkedIn" id="linkedin"
+                                    name="linkedin">
+                            </div>
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Facebook</label>
+                                <input wire:model="facebook" class="input-base" placeholder="Facebook" id="facebook"
+                                    name="facebook">
+                            </div>
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Instagram</label>
+                                <input wire:model="instagram" class="input-base" placeholder="Instagram" id="instagram"
+                                    name="instagram">
+                            </div>
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Twitter</label>
+                                <input wire:model="twitter" class="input-base" placeholder="Twitter" id="twitter"
+                                    name="twitter">
+                            </div>
+                            <div class="">
+                                <label for="" class="text-base text-text-300">WhatsApp Empresarial</label>
+                                <input wire:model="whatsapp" x-model="waText" class="input-base"
+                                    placeholder="WhatsApp Empresarial" id="whatsapp" name="whatsapp">
+                            </div>
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Sitio Web</label>
+                                <input wire:model="website" class="input-base" placeholder="Sitio web" id="website"
+                                    name="website">
+                            </div>
+                        </div>
+                        <p class="text-text-500 text-lg font-medium w-full border-b-2 border-primary-100 mt-3">Usuario y
+                            Contraseña <small class="text-xs"><small class="text-red-300 float-right mt-1">(*)
+                                    Obligatorio</small></small></p>
+                        <div class="grid grid-col-1 md:grid-cols-3 gap-4 mt-4">
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Usuario<small
+                                        class="text-xs float-right text-red-300">(*)</small></label>
+                                <input readonly="" x-model="email" class="input-base cursor-not-allowed"
+                                    placeholder="Usuario" id="user" name="user">
+                            </div>
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Contraseña<small
+                                        class="text-xs float-right text-red-300">(*)</small></label>
+                                <div class="relative mt-1">
+                                    <div
+                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-text-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div class="">
+                                        <input @keyup.debounce="checkpassword" x-model="password" class="input-icon"
+                                            placeholder="Contraseña" id="password" name="password"
+                                            :type="showPass ? 'password' : 'text'" type="password">
+                                        <div
+                                            class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 cursor-pointer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300 block"
+                                                fill="none" @click="showPass = !showPass"
+                                                :class="{'hidden': !showPass, 'block':showPass }" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                                </path>
+                                            </svg>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300 hidden"
+                                                fill="none" @click="showPass = !showPass"
+                                                :class="{'block': !showPass, 'hidden':showPass }" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <label for="" class="text-base text-text-300">Repita Contraseña<small
+                                        class="text-xs float-right text-red-300">(*)</small></label>
+                                <div class="relative mt-1">
+                                    <div
+                                        class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-text-200">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <div class="">
+                                        <input @keyup.debounce="checkpassword" x-model="confirmpassword"
+                                            class="input-icon" placeholder="Contraseña" id="repeatpassword"
+                                            name="repeatpassword" :type="showConfPass ? 'password' : 'text'"
+                                            type="password">
+                                        <div
+                                            class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 cursor-pointer">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300 block"
+                                                fill="none" @click="showConfPass = !showConfPass"
+                                                :class="{'hidden': !showConfPass, 'block':showConfPass }"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                                </path>
+                                            </svg>
+
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300 hidden"
+                                                fill="none" @click="showConfPass = !showConfPass"
+                                                :class="{'block': !showConfPass, 'hidden':showConfPass }"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div x-show="!passwordchecked" class="grid grid-cols-1 md:grid-cols-3 gap-0 mt-1">
+                            <div class="hidden md:block"></div>
+                            <div class="md:col-span-2 flex justify-end">
+                                <span class="text-red-400 font-semibold text-xs" x-text="passwordmessage"></span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col my-3">
+                            <div class="flex flex-col items-center justify-center">
+                                <label for="" class="text-base text-text-300">Avatar</label>
+                                <!-- Show the image -->
+                                <template x-if="imageUrl">
+                                    <label for="avatar">
+                                        <img :src="imageUrl"
+                                            class="object-cover rounded border border-gray-200 cursor-pointer"
+                                            style="width: 100px; height: 100px;">
+                                    </label>
+                                </template>
+                                <!-- Show the gray box when image is not available -->
+                                <template x-if="!imageUrl">
+                                    <label for="avatar">
+                                        <div class="flex items-center justify-center border-2 border-dashed rounded border-gray-200 bg-gray-100 cursor-pointer hover:border-green-500 text-gray-300 hover:text-green-500"
+                                            style="width: 100px; height: 100px;">
+                                            <small>Tu foto Aquí</small>
+                                        </div>
+                                    </label>
+
+                                </template>
+
+                                <label for="avatar">
+                                    <div class="flex items-center justify-center border-2 border-dashed rounded border-gray-200 bg-gray-100 cursor-pointer hover:border-green-500 text-gray-300 hover:text-green-500"
+                                        style="width: 100px; height: 100px;">
+                                        <small>Tu foto Aquí</small>
+                                    </div>
+                                </label>
+
+                            </div>
+                            <div class="hidden">
+                                <!-- Image file selector -->
+                                <input class="mt-2" type="file" name="avatar" id="avatar" accept="image/*"
+                                    @change="fileChosen">
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                <template x-if="isInst">
+                    <section class="mb-8 mt-3">
+                        <div class="container px-3 md:px-6">
+                            <p class="text-text-500 text-lg font-medium w-full border-b-2 border-primary-100 mt-3">Datos
+                                de la Institución <small class="text-gray-400 text-xs">(Datos visibles para las
+                                    instituciones y otros profesionales) <small
+                                        class="text-red-300 float-right mt-1">(*) Obligatorio</small></small></p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Nombre de la Institución<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input wire:model="name" class="input-base" placeholder="Nombre de la Institución"
+                                        id="name" name="name" value="">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">CUIT<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input wire:model="cuil" wire:keyup="validacion" class="input-base"
+                                        placeholder="CUIT de la Institución" id="cuil" name="cuil" value="">
+                                </div>
+                                <div>
+                                    <label for="institution_type" class="text-base text-text-300">Tipo de
+                                        Institución<small class="text-xs float-right text-red-300">(*)</small></label>
+                                    <select name="institution_type" id="institution_type" class="input-base">
+                                        <option selected="" value="Hospital">Hospital</option>
+                                        <option value="Clínica">Clínica</option>
+                                        <option value="Institución">Institución</option>
+                                        <option value="Consultorio">Consultorio</option>
+                                        <option value="Centro Médico">Centro Médico</option>
+                                        <option value="Organismo Público">Organismo Público</option>
+                                        <option value="Consultora">Consultora</option>
+                                        <option value="Agencia">Agencia</option>
+                                        <option value="Fundación">Fundación</option>
+                                        <option value="Obra Social">Obra Social</option>
+                                        <option value="Farmacéutica">Farmacéutica</option>
+                                        <option value="Escuela">Escuela</option>
+                                        <option value="Universidad">Universidad</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p class="text-text-500 text-lg font-medium w-full border-b-2 border-primary-100 mt-3">Redes
+                                Sociales <small class="text-gray-400 text-xs">(Datos visibles para las instituciones y
+                                    otros profesionales)</small></p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">LinkedIn</label>
+                                    <input wire:model="linkedin" class="input-base" placeholder="LinkedIn" id="linkedin"
+                                        name="linkedin">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Facebook</label>
+                                    <input wire:model="facebook" class="input-base" placeholder="Facebook" id="facebook"
+                                        name="facebook">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Instagram</label>
+                                    <input wire:model="instagram" class="input-base" placeholder="Instagram"
+                                        id="instagram" name="instagram">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Twitter</label>
+                                    <input wire:model="twitter" class="input-base" placeholder="Twitter" id="twitter"
+                                        name="twitter">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">WhatsApp Empresarial</label>
+                                    <input wire:model="whatsapp" class="input-base" placeholder="WhatsApp Empresarial"
+                                        id="whatsapp" name="whatsapp">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Sitio Web</label>
+                                    <input wire:model="website" class="input-base" placeholder="Sitio web" id="website"
+                                        name="website">
+                                </div>
+                            </div>
+                            <p class="text-text-500 text-lg font-medium w-full border-b-2 border-primary-100 mt-3">
+                                Contacto <small class="text-gray-400 text-xs">(Datos NO visibles para las instituciones
+                                    y otros profesionales) <small class="text-red-300 float-right mt-1">(*)
+                                        Obligatorio</small></small></p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Teléfono/Celular<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input wire:model="phone" class="input-base"
+                                        placeholder="Teléfono de la Institución" id="phone" name="phone" value="">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Email<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input type="email" wire:model="email" x-model="email" class="input-base"
+                                        placeholder="Nombre del profesional" id="email" name="email" value="">
+                                </div>
+                                <div class="">
+                                    <label for="direccion" class="text-base text-text-300">Dirección</label>
+                                    <input wire:model="direccion" wire:keyup="validacion" class="input-base"
+                                        placeholder="Dirección de la Institución" id="direccion" name="direccion"
+                                        value="">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Localidad</label>
+                                    <input wire:model="city" class="input-base" placeholder="Localidad" id="city"
+                                        name="city" value="">
+                                </div>
+
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Provincia</label>
+                                    <input wire:model="province" class="input-base" placeholder="Provincia"
+                                        id="province" name="province">
+                                </div>
+
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">País</label>
+                                    <input wire:model="country" class="input-base" placeholder="País" id="country"
+                                        name="country">
+                                </div>
+                            </div>
+                            <p class="text-text-500 text-lg font-medium w-full border-b-2 border-primary-100 mt-3">
+                                Usuario y Contraseña <small class="text-gray-400 text-xs">(Datos NO visibles para las
+                                    instituciones y otros profesionales) <small
+                                        class="text-red-300 float-right mt-1">(*) Obligatorio</small></small></p>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Usuario<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <input readonly="" x-model="email" class="input-base cursor-not-allowed"
+                                        placeholder="Usuario" id="user" name="user">
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Contraseña<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <div class="relative mt-1">
+                                        <div
+                                            class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-text-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="">
+                                            <input @keyup.debounce="checkpassword" x-model="password" class="input-icon"
+                                                placeholder="Contraseña" id="password" name="password"
+                                                :type="showPass ? 'password' : 'text'">
+                                            <div
+                                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 cursor-pointer">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300"
+                                                    fill="none" @click="showPass = !showPass"
+                                                    :class="{'hidden': !showPass, 'block':showPass }"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                                    </path>
+                                                </svg>
+
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300"
+                                                    fill="none" @click="showPass = !showPass"
+                                                    :class="{'block': !showPass, 'hidden':showPass }"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <label for="" class="text-base text-text-300">Repita Contraseña<small
+                                            class="text-xs float-right text-red-300">(*)</small></label>
+                                    <div class="relative mt-1">
+                                        <div
+                                            class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-text-200">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="">
+                                            <input @keyup.debounce="checkpassword" x-model="confirmpassword"
+                                                class="input-icon" placeholder="Contraseña" id="repeatpassword"
+                                                name="repeatpassword" :type="showConfPass ? 'password' : 'text'">
+                                            <div
+                                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 cursor-pointer">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300"
+                                                    fill="none" @click="showConfPass = !showConfPass"
+                                                    :class="{'hidden': !showConfPass, 'block':showConfPass }"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                                    </path>
+                                                </svg>
+
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300"
+                                                    fill="none" @click="showConfPass = !showConfPass"
+                                                    :class="{'block': !showConfPass, 'hidden':showConfPass }"
+                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div x-show="!passwordchecked" class="grid grid-cols-1 md:grid-cols-3 gap-0 mt-1">
+                                <div class="hidden md:block"></div>
+                                <div class="md:col-span-2 flex justify-end">
+                                    <span class="text-red-400 font-semibold text-xs" x-text="passwordmessage"></span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col my-3">
+                                <div class="flex flex-col items-center justify-center">
+                                    <label for="" class="text-base text-text-300">Avatar</label>
+                                    <!-- Show the image -->
+                                    <template x-if="imageUrl">
+                                        <label for="avatar">
+                                            <img :src="imageUrl"
+                                                class="object-cover rounded border border-gray-200 cursor-pointer"
+                                                style="width: 100px; height: 100px;">
+                                        </label>
+                                    </template>
+                                    <!-- Show the gray box when image is not available -->
+                                    <template x-if="!imageUrl">
+                                        <label for="avatar">
+                                            <div class="flex items-center justify-center border-2 border-dashed rounded border-gray-200 bg-gray-100 cursor-pointer hover:border-green-500 text-gray-300 hover:text-green-500"
+                                                style="width: 100px; height: 100px;">
+                                                <small>Tu Foto Aquí</small>
+                                            </div>
+                                        </label>
+
+                                    </template>
+                                </div>
+                                <div class="hidden">
+                                    <!-- Image file selector -->
+                                    <input class="mt-2" type="file" name="avatar" id="avatar" accept="image/*"
+                                        @change="fileChosen">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </template>
+
+
+
+
+
+
+
+
+                <div class="flex items-center justify-center mt-4">
+                    <label for="acceptThermsCond" class="inline-flex items-center">
+                        <input id="acceptThermsCond" x-model="acceptTherms" type="checkbox"
+                            class="w-4 h-4 rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            name="acceptThermsCond">
+                        <span class="ml-2 text-sm text-text-300">
+                            Acepto los
+                        </span>
+                    </label>
+                    <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out text-blue-500 hover:underline cursor-pointer"
+                        @click="thermsModal = true">Términos y condiciones</a>
+
+
+                </div>
+                <div class="flex items-center justify-between mt-4">
+                    <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out text-blue-500 hover:underline"
+                        href="http://www.web.informental.com.ar/login">¿Ya estás registrado?</a>
+
+                    <button class="ml-4 btn btn-primary disabled:opacity-25 transition ease-in-out duration-150"
+                        x-bind:disabled="!acceptTherms || !passwordchecked" disabled="disabled">
+                        Registrarme
+                    </button>
+                </div>
+            </form>
+            <div x-show.transition.duration.500ms="thermsModal"
+                class="fixed inset-0 bg-white bg-opacity-75 flex items-center justify-center px-4 md:px-0"
+                style="display: none;">
+                <div class="flex flex-col bg-white shadow-2xl rounded-lg border-2 border-gray-400 p-6 max-h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-green-300 scrollbar-track-white scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
+                    @click.away="thermsModal = false">
+                    <div class="flex justify-between mb-4">
+                        <h3 class="font-bold md:text-xl">Política de Privacidad - Términos y Condiciones pertenecientes
+                            a INFORMENTAL</h3>
+                        <button @click="thermsModal = false">
+                            <svg enable-background="new 0 0 32 32" class="h-8 w-8" id="Слой_1" version="1.1"
+                                viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path
+                                    d="M17.459,16.014l8.239-8.194c0.395-0.391,0.395-1.024,0-1.414c-0.394-0.391-1.034-0.391-1.428,0  l-8.232,8.187L7.73,6.284c-0.394-0.395-1.034-0.395-1.428,0c-0.394,0.396-0.394,1.037,0,1.432l8.302,8.303l-8.332,8.286  c-0.394,0.391-0.394,1.024,0,1.414c0.394,0.391,1.034,0.391,1.428,0l8.325-8.279l8.275,8.276c0.394,0.395,1.034,0.395,1.428,0  c0.394-0.396,0.394-1.037,0-1.432L17.459,16.014z"
+                                    fill="#121313" id="Close"></path>
+                                <g></g>
+                                <g></g>
+                                <g></g>
+                                <g></g>
+                                <g></g>
+                                <g></g>
+                            </svg>
+                        </button>
+                    </div>
+                    <div x-html="thermsText" class="text-xs mb-6">
+                        <p>En INFORMENTAL, tenemos conocimiento de la importancia que tiene para el paciente como para
+                            usted y para las instituciones el manejo y resguardo de los datos personales, y los datos de
+                            tracking (seguimiento de terapias) realizadas por usted. Por tal motivo es que los mismos se
+                            manejan de manera segura y privada, entre el paciente y usted.</p>
+                        <p class="text-center">
+                        </p>
+                        <dl>
+                            <dt class="font-semibold">I. ¿Qué cubre esta Política de privacidad?</dt>
+                            <dd>
+                                INFORMENTAL es un Software Integral de soporte de Terapias de Salud Mental. El mismo
+                                ofrece al profesional de la Salud Mental, la posibilidad de registrase y dar comienzo a
+                                la utilización del mismo. Con INFORMENTAL podrá dar de alta a un paciente y generar un
+                                tracking. Por lo tanto, si usted se da de alta como usuario está aceptando las prácticas
+                                y políticas descriptas en esta política de Privacidad.
+                                Está política cubre los datos personales de los pacientes y de usted, como así también
+                                los de datos de registro de las instituciones y los datos recopilados por los trackings.
+                                Usamos dichos datos internamente en relación con nuestros servicios, incluso para
+                                personalizar, proporcionar y mejorar nuestros Servicios, para contactarlos y permitir
+                                que otros usuarios se comuniquen con usted.
+                            </dd>
+                            <dt class="font-semibold">II. ¿INFORMENTAL recopila datos personales de pacientes mayores de
+                                16 años o de pacientes con diversidad funcional (Discapacidad)?</dt>
+                            <dd>
+                                Como se indica en nuestros Términos, es el profesional quien decide si realiza una
+                                terapia con el soporte de INFORMENTAL a personas mayores de dieciséis años o a personas
+                                con un grado de discapacidad leve. En caso de que el profesional permita el uso del
+                                sistema por dichos pacientes, los mismos deberán dar su consentimiento para querer y
+                                poder utilizarlo.
+                                INFORMENTAL inhabilitará por sistema el alta de pacientes menores a 16 años.
+                                El profesional será responsable de dar de alta un paciente y comenzar a utilizar el
+                                soporte que brinda INFORMENTAL es exclusivamente el profesional.
+                            </dd>
+                            <dt class="font-semibold">III. ¿INFORMENTAL puede modificar la Política de privacidad?</dt>
+                            <dd>
+                                En INFORMENTAL tenemos como objetivo la mejora continua de nuestros servicios. Por lo
+                                que será posible que debamos modificar dicha Política de privacidad cada cierto período
+                                de tiempo. Al momento de realizar algún cambio, se publicará la “Política actualizada” y
+                                los cambios le serán informados.
+                                Si decide utilizar y / o acceder a los Servicios después de que se hayan publicado los
+                                cambios en la Política de privacidad, usted dará su consentimiento y se aplicará la
+                                Política actualizada.
+                            </dd>
+                            <dt class="font-semibold">IV. ¿Qué información recopila INFORMENTAL?</dt>
+                            <dd>
+                                INFORMENTAL recopila los datos personales (de usted y de los pacientes) y los datos
+                                relacionados a los trackings (registrados por usted o cargados por los pacientes),
+                                mediante la utilización del nuestro Sistema.
+                                Usted cargará la información de cada paciente y el paciente cargará la información
+                                relacionada a las respuestas que conforman las preguntas realizadas por usted.
+                                Se recopilarán logos e imágenes que se cargarán para visualizar a cada usuario, como así
+                                también las comunicaciones que se puedan generar entre las instituciones y usted, entre
+                                el paciente y usted y entre otros profesionales y usted.
+                                Información de contacto y registro del profesional: Si accede a nuestro sitio web o
+                                aplicación y/o se registra para obtener una cuenta, recopilaremos datos obligatorios y
+                                opcionales de los cuales algunos de ellos serán visibles para el resto de los usuarios
+                                “profesionales” e “Instituciones” y otros datos que no serán visibles para el resto de
+                                los usuarios “Profesionales” e “Instituciones”. Se aclara que los pacientes no tienen
+                                acceso al sistema, sino solamente a la APP donde sólo podrán validar sus datos y cargar
+                                las respuestas a las preguntas que contenga cada tracking.<br>
+                                A continuación, se detallarán datos obligatorios, visibles o no visibles y datos
+                                optativos a completar:
+                                <ul>
+                                    <li>Datos obligatorios visibles: Nombre y Apellido; Profesión (en caso de contar con
+                                        Especialidad, determinar la misma); Ciudad, Provincia y País en el que reside.
+                                    </li>
+                                    <li>Datos obligatorios no visibles: Datos de contacto (Número de celular o Correo
+                                        electrónico); Número de Documento Nacional de Identidad (DNI); Número de
+                                        CUIL/CUIT; Fecha de nacimiento; Género.</li>
+                                    <li>Datos optativos visibles: Imagen de perfil; Datos de Redes Sociales.</li>
+                                    <li>Datos optativos no visibles: Línea teórica.</li>
+                                </ul><br>
+                                Se recopilará los datos de su usuario y contraseña, pero esos datos serán sólo serán
+                                visibles para INFORMENTAL.
+                                Una vez registrado, podrá iniciar sesión para revisar y actualizar su información y
+                                preferencias cuando lo desee. Si se comunica directamente con INFORMENTAL o si se
+                                registra en uno de nuestros blogs o listas de correo electrónico, como así también
+                                participando de un sorteo o concurso que podamos ofrecer, entonces podemos recopilar la
+                                información que usted nos brinde.
+                                Información de la transacción: Si se convierte en usuario de INFORMENTAL, usted podrá
+                                adquirir TKTS (Tickets) o recibir TKTS delegados por instituciones u otros
+                                profesionales. Los TKTS son los elementos necesarios para poder generar un tracking.
+                                Mediante los TKTS INFORMENTAL monetiza sus servicios. La adquisición de TKTS le
+                                permitirá a usted generar los trackings y mantenerlos activos mes a mes. Los TKTS pueden
+                                ser utilizados de manera personal o para delegarlos a otro profesional. Si utiliza
+                                tarjeta de crédito/débito, datos de cuenta bancaria, datos de transferencia, datos de
+                                cheques o cualquier modo de pago, INFORMENTAL recopilará información relacionada con el
+                                pago de nuestros servicios. Esta información nos permitirá realizar el seguimiento del
+                                cobro de los mismos.
+                                Comunicaciones, encuestas y revisiones: Recopilaremos información cuando se comunique
+                                con nosotros mediante nuestros canales de comunicación. Entre ellos correo electrónico o
+                                intercambios realizados a través de nuestro sitio web o Aplicación.
+                                Información de contacto y los de registro. INFORMENTAL recopilará los datos obligatorios
+                                visibles y no visibles, como así también datos optativos visibles o no visibles, de
+                                usted y de los pacientes que dé de alta en el sistema.
+                                Información de los trackings: Al generar un tracking, usted deberá registrar al/la
+                                paciente a quien se le realizará el seguimiento, determinando fecha de inicio, motivo de
+                                consulta, pre diagnóstico y diagnóstico. También deberá ponderar los niveles y registrar
+                                las preguntas que el paciente responderá. Cada vez que el paciente cargue las respuestas
+                                a las preguntas realizadas por usted o cargue palabras claves relacionadas a las
+                                preguntas, INFORMENTAL recopilará esta información, permitiendo que usted pueda
+                                interactuar con la misma y tenga un soporte para realizar terapias más eficientes. El
+                                chat de comunicaciones que usted realice de manera personal con el paciente, o su equipo
+                                tratante con el paciente, o entre usted y el equipo tratante, también serán registrados.
+                            </dd>
+                            <dt class="font-semibold">V. ¿Cómo utiliza INFORMENTAL mis datos personales y los del
+                                tracking?</dt>
+                            <dd>
+                                Datos Personales: Haremos uso de sus datos personales para brindarle nuestros servicios.
+                                Podremos utilizar esos datos para comunicarnos con usted y para utilizarlos con
+                                propósitos como los siguientes:
+                                Administrar su cuenta: Procesamos sus datos de Registro para cumplir con nuestra
+                                relación contractual con usted, como usuario de la aplicación. Como así también para
+                                facilitar el pago de nuestros servicios.
+                                Comunicaciones promocionales y de marketing: Podremos comunicarnos con usted, con los
+                                datos que nos ha brindado y recibir promociones. En caso de que no desee recibir
+                                nuestras comunicaciones promocionales por correo electrónico, deberá indicarnos,
+                                haciendo clic en el enlace para cancelar la suscripción.
+                                Fines comerciales: Podremos utilizar sus datos de Registro para nuestros fines
+                                comerciales, como así también para operar y mejorar nuestro Servicio y permitir el
+                                desarrollo de nuevos servicios.
+                                Datos Personales del paciente: Utilizaremos los Datos Personales del paciente para
+                                permitirle a usted la realización de los trackings, al unir el usuario del paciente con
+                                su usuario registrado. Usted podrá visualizar los datos personales del paciente y
+                                corroborar si los mismos se encuentran actualizados. En caso de que se detecte que algún
+                                dato se encuentra desactualizado o es equívoco, usted podrá modificarlos y el paciente
+                                recibirá un alerta de que usted quiere actualizar los mismos. Dichos datos se
+                                modificarán sólo con aceptación del paciente.
+                                Datos del tracking: Los datos de los trackings serán utilizados por usted para obtener
+                                distintos soportes para su tratamiento. Los mismos pueden ser visualizados, por usted o
+                                por un equipo tratante.
+                                Información en forma anónima de los pacientes y sus trackings: A su vez, y de una forma
+                                anónima, los datos personales o de registro y los datos generados en los trackings,
+                                podrán ser usados por INFORMENTAL para contribuir a la ciencia y la investigación, como
+                                así también para congresos y conferencias o para estudios sectoriales, demográficos y de
+                                estado de salud mental de la comunidad.
+                            </dd>
+                            <dt class="font-semibold">VI. ¿Cómo comparte INFORMENTAL mis datos personales?</dt>
+                            <dd>
+                                INFORMENTAL no comparte, como así tampoco vende información de registro ni de pacientes
+                                a terceros. Los datos de registro que el profesional cargue podrán ser visualizados por
+                                los demás usuarios de la siguiente manera:
+                                Visualización de sus datos de registro por otros usuarios:
+                                Pacientes: Los pacientes no tendrán acceso al Sistema. Los mismos solamente pueden
+                                acceder a la APP para responder las preguntas de sus trackings y confirmar sus datos
+                                personales.
+                                Instituciones: Los usuarios “Instituciones” sólo podrán visualizar su Imagen de Perfil,
+                                Nombre y Apellido, País, Provincia, Ciudad. De manera opcional usted podrá compartir y
+                                que se visualicen sus enlaces a sus redes sociales. Dichos datos se encontrarán dentro
+                                de la sección Profesionales.
+                                Parte de los objetivos del sistema es promover la vinculación y contacto entre los
+                                distintos usuarios. Por tal fin las instituciones podrán contactarlo mediante los datos
+                                opcionales de redes sociales que hayan sido aportados por usted.
+                                Otros profesionales: Los demás usuarios “Profesionales” sólo podrán visualizar su Imagen
+                                de perfil, Nombre y Apellido, País, Provincia, Ciudad. De manera opcional usted podrá
+                                compartir y que se visualicen sus enlaces a sus redes sociales. Dichos datos se
+                                encontrarán dentro de la sección Profesionales.
+                                Parte de los objetivos del sistema es promover la vinculación y contacto entre los
+                                distintos usuarios. Por tal fin otro profesionales podrán contactarlo mediante los datos
+                                opcionales de redes sociales que hayan sido aportados por usted.
+                                Visualización de los datos personales de pacientes que hayan sido registrados y dados de
+                                alta en la aplicación por usted:
+                                Instituciones: Las instituciones no podrán visualizar el listado de pacientes de
+                                INFORMENTAL ni acceder a la información personal de los mismos. Las instituciones si
+                                podrán visualizar Nombre y Apellido del paciente, solamente cuando existan trackings que
+                                contengan TKTS que hayan sido delegados por las mismas (Esta información la podrán ver
+                                solamente en la sección Trackings). Esto tiene como objeto que las instituciones
+                                delegantes de TKTS puedan realizar un seguimiento de la utilización de los mismos.
+                                Otros profesionales: Todos los “Profesionales” podrán acceder al listado de pacientes.
+                                Este listado contendrá los datos básicos como el nombre y apellido; DNI; Ciudad,
+                                Provincia y País. A su vez el listado informará si el paciente tiene algún tracking
+                                activo. En caso contrario, informará cual fue la fecha de finalización del último
+                                tracking que se le haya realizado. Esta información antes descripta podrá ser visible
+                                por todos los profesionales. Los demás datos personales (datos de contacto y adicionales
+                                solamente podrán ser visualizados por los profesionales que tengan algún tracking
+                                vinculantes con dicho paciente. Estos datos no podrán ser accesibles o visibles por
+                                profesionales que no tengan o hayan tenido algún tracking vinculante con el paciente. En
+                                el momento que un paciente acepte que un profesional le realice un tracking, en este
+                                caso, el profesional tendrá acceso pleno a los datos personales del paciente. La razón
+                                por la cual todos los profesionales podrán visualizar los datos básicos de todos los
+                                pacientes es para poder identificar si los mismos se encuentran cargados o no en
+                                INFORMENTAL, y para que puedan generarse nuevos trackings entre pacientes registrados y
+                                profesionales.
+                                Equipo tratante: Todo profesional que esté involucrado en una terapia con un paciente,
+                                ya sea siendo el profesional creador del tracking, o profesiones que pertenezcan al
+                                equipo tratante, podrán tener acceso pleno a los datos personales del paciente.
+                                Visualización de datos generales:
+                                Fines comerciales: Podemos compartir datos personales de los profesionales con empresas
+                                que prestan servicios en nuestro nombre, incluidos los proveedores que nos ayudan a
+                                enviar comunicaciones, analizar datos y mantener nuestros sitios web y aplicación.
+                                Redes sociales y aplicaciones de terceros: Podremos compartir datos personales de los
+                                profesionales con las redes sociales cuando usted utilice nuestros Servicios para
+                                interactuar con un sitio de redes sociales. (Por ejemplo, clic en botón “Me Gusta” de
+                                las redes sociales actuales).
+                            </dd>
+                            <dt class="font-semibold">VII. ¿Cómo se comunica INFORMENTAL conmigo?</dt>
+                            <dd>
+                                INFORMENTAL podrá enviar notificaciones automáticas a su dispositivo móvil o sistema. Es
+                                posible que le enviemos notificaciones automáticas para proporcionarle recordatorios y
+                                notificaciones.
+                                Podremos enviarle correo electrónico con información sobre INFORMENTAL y sus servicios.
+                                En caso de que usted no desee recibir dicha información, puede darse de baja en a la
+                                suscripción de comunicaciones, haciendo clic en el botón Cancelar, que se encuentra en
+                                la parte inferior de cada comunicación o comunicándose con el soporte de INFORMENTAL.
+                                Como así también enviando a INFORMENTAL un mensaje de texto, con la palabra “Stop”. Una
+                                vez realizado dicho trámite se le enviará la confirmación de su cancelación. Tenga en
+                                cuenta que puede demorar la realización de dicho trámite, transcurriendo un plazo
+                                razonable para concluir el mismo.
+                            </dd>
+                            <dt class="font-semibold">VIII. ¿Cómo protege INFORMENTAL mis datos personales?</dt>
+                            <dd>
+                                Nos esforzamos por proteger la privacidad y seguridad de su cuenta, como también sus
+                                Datos personales y los de los trackings que usted carga al sistema. Sin embargo, no se
+                                puede garantizar que Internet sea 100% seguro, por lo que no podemos garantizar la
+                                seguridad de la información que nos proporcione. No aceptamos responsabilidad por
+                                divulgación involuntaria.
+                                Debe proteger su cuenta contra el acceso no autorizado a su contraseña, teléfono y
+                                computadora, entre otras acciones, cerrando la sesión después de utilizar una
+                                computadora compartida, seleccionando y protegiendo su contraseña y / u otro mecanismo
+                                de inicio de sesión de manera adecuada, y limitando el acceso a su computadora o
+                                dispositivo y navegador cerrando sesión después de que haya terminado de acceder a su
+                                cuenta.
+                                No somos responsables por contraseñas perdidas, robadas o comprometidas, o por cualquier
+                                actividad en su cuenta a través de una actividad de contraseña no autorizada. Si accede
+                                a su cuenta a través de un sitio o servicio de terceros, es posible que tenga
+                                protecciones de inicio de sesión adicional o diferente a través de ese sitio o servicio
+                                de terceros.
+                            </dd>
+                            <dt class="font-semibold">IX. ¿Cuál es la responsabilidad por la divulgación indebida de la
+                                información que se maneja en INFORMENTAL?</dt>
+                            <dd>
+                                INFORMENTAL, es un sistema de soporte y una aplicación cuyo objeto consiste en el manejo
+                                de información de pacientes, comprendiendo los datos personales y de los trackings, con
+                                el fin de lograr una comunicación con el profesional y de esa manera obtener una mejor
+                                terapia a través de la contestación de preguntas que realiza su profesional. En caso de
+                                divulgación de su información, será responsable el profesional que haga un uso indebido
+                                de la misma.
+                                “Artículo 156 Código Penal argentino: Será reprimido con multa de MIL QUINIENTOS PESOS a
+                                NOVENTA MIL PESOS e inhabilitación especial, en su caso, por seis meses a tres años, el
+                                que, teniendo noticia, por razón de su estado, oficio, empleo, profesión o arte, de un
+                                secreto cuya divulgación pueda causar daño, lo revelare sin justa causa”.
+                                Sin embargo, se podrá divulgar la información personal, cuando exista justa causa, es
+                                decir cuando sea necesario para la defensa del propio interés del paciente, el ejercicio
+                                del propio derecho o en el caso de que exista deber legal de comunicar o denunciar el
+                                hecho a la autoridad competente. Pudiendo evitar un mal a un tercero o a él mismo.
+                            </dd>
+                            <dt class="font-semibold">X. ¿Hay enlaces a servicios de terceros?</dt>
+                            <dd>
+                                Nuestros Servicios no contienen enlaces a sitios web o servicios de terceros.
+                                Usted puede enviar al paciente enlaces de una página web, video, audio o algún archivo,
+                                lo cuales podrán contener enlaces a terceros. Tenga en cuenta que su acceso a cualquier
+                                sitio de terceros a través de uno de estos enlaces no se rige por esta Política de
+                                privacidad. Los mismos se rigen por la política de privacidad de dichos terceros.
+                                No somos responsables de las prácticas de privacidad o seguridad de esos terceros.
+                            </dd>
+                            <dt class="font-semibold">XI. ¿Cuáles son los derechos como sujeto de datos?</dt>
+                            <dd>
+                                Cuando lo requiera la ley aplicable, usted tiene los siguientes derechos con respecto a
+                                sus Datos de Registro:<br>
+                                <ol>
+                                    <li>i. Derecho de acceso; derecho a la portabilidad de datos. Tiene derecho a
+                                        recibir una copia de los Datos Personales y Datos de Trackings que tenemos sobre
+                                        el paciente y sobre usted. También tiene derecho a recibir sus Datos Personales
+                                        en un formato estructurado y el derecho a que los Datos Personales se transmitan
+                                        directamente desde INFORMENTAL en su dirección.</li>
+                                    <li>ii. Derecho de rectificación. Tiene derecho a obtener de nosotros sin demora
+                                        indebida la corrección de los Datos Personales inexactos de usted como del
+                                        paciente.</li>
+                                    <li>iii. Derecho a borrar. Tiene derecho a solicitar la supresión de los Datos
+                                        Personales que le conciernen, salvo que sea necesario para la realización de la
+                                        terapia.</li>
+                                    <li>iv. Derecho a presentar una queja. Tiene derecho a presentar una queja ante
+                                        nuestro delegado de protección de datos o una autoridad supervisora.</li>
+                                    <li>v. Derecho a retirar el consentimiento. Puede retirar su consentimiento para que
+                                        se deje de procesar los Datos Personales de usted en cualquier momento.</li>
+                                </ol><br>
+                                Siempre puede optar por no revelarnos datos, pero tenga en cuenta que algunos datos son
+                                necesarios para registrarse con nosotros y para poder dar un correcto funcionamiento del
+                                Sistema y de la APP. A través de la configuración de su cuenta, puede acceder y
+                                actualizar los datos que nos ha proporcionado. Si desea ejercer alguno de sus derechos y
+                                esa opción aún no está disponible a través de la configuración de su cuenta, comuníquese
+                                con nosotros y atenderemos su solicitud. Tenga en cuenta que somos propietarios y
+                                podemos utilizar datos agregados y anónimos derivados de sus Datos Personales y Datos de
+                                Tracking en cualquier momento.
+                                Recuerde que el uso de dicha Aplicación no le da derecho a considerarse como propietario
+                                de la misma, ni a ceder derecho alguno.
+                            </dd>
+                            <dt class="font-semibold">XII. Juez competente</dt>
+                            <dd>
+                                En caso de Disputa, por falta de pago al hacer uso de la aplicación o por divulgación de
+                                datos personales, tanto del paciente como del profesional, se resolverá ante el Juez
+                                competente.
+                            </dd>
+                            <dt class="font-semibold">XIII. ¿Cómo me comunico con INFORMENTAL o su Delegado de
+                                Protección de Datos?</dt>
+                            <dd>
+                                Si tiene preguntas sobre este Aviso de privacidad, puede comunicarse con nuestro soporte
+                                oficial de protección de datos en datos@informental.com
+                            </dd>
+                            <dt class="font-semibold">XIV. Agradecimiento</dt>
+                            <dd>Muchas gracias por hacer uso del sistema. Que tenga una agradable experiencia. Lo saluda
+                                atentamente el equipo de INFORMENTAL.</dd>
+                            <p></p>
+                        </dl>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="button" class="btn btn-primary" @click="thermsModal = false">
+                            Entendido
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div x-show.transition.duration.500ms="errorForm"
+                class="fixed inset-0 bg-white bg-opacity-75 flex items-center justify-center px-4 md:px-0"
+                style="display: none;">
+                <div class="flex flex-col bg-white shadow-2xl rounded-lg border-2 border-gray-400 p-6 max-h-screen overflow-y-auto"
+                    @click.away="errorForm = false">
+                    <div class="flex justify-between mb-4">
+                        <h3 class="font-bold md:text-lg">¡Cuidado!</h3>
+                        <button @click="errorForm = false">
+                            <svg enable-background="new 0 0 32 32" class="h-8 w-8" id="Слой_1" version="1.1"
+                                viewBox="0 0 32 32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <path
+                                    d="M17.459,16.014l8.239-8.194c0.395-0.391,0.395-1.024,0-1.414c-0.394-0.391-1.034-0.391-1.428,0  l-8.232,8.187L7.73,6.284c-0.394-0.395-1.034-0.395-1.428,0c-0.394,0.396-0.394,1.037,0,1.432l8.302,8.303l-8.332,8.286  c-0.394,0.391-0.394,1.024,0,1.414c0.394,0.391,1.034,0.391,1.428,0l8.325-8.279l8.275,8.276c0.394,0.395,1.034,0.395,1.428,0  c0.394-0.396,0.394-1.037,0-1.432L17.459,16.014z"
+                                    fill="#121313" id="Close"></path>
+                                <g></g>
+                                <g></g>
+                                <g></g>
+                                <g></g>
+                                <g></g>
+                                <g></g>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="text-sm mb-6">
+                        <p>Al parecer hay información que no se completó correctamente. Por favor, asegúrate de
+                            completar toda la información requerida.</p>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="button" class="btn btn-primary" @click="errorForm = false">
+                            Entendido
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <style scoped="">
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+    <script>
+        function register() {
+            return {
+                userType: "",
+                thermsModal: false,
+                errorForm: "",
+                acceptTherms: false,
+                isPro: false,
+                isInst: false,
+                otherSpecial: false,
+                especialidad: "",
+                email: "",
+                celphone: "",
+                waText: "",
+                password: "",
+                showPass: true,
+                confirmpassword: "",
+                showConfPass: true,
+                passwordchecked: false,
+                passwordmessage: "",
+                imageUrl: "",
+                thermsText: "",
+                getTherms(type) {
+                    const tipo = type
+                    axios.get(`getTherms/${tipo}`)
+                        .then((resp) => {
+                            this.thermsText = resp.data.therms;
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                        });
+                },
+                toggleEspecialidad() {
+                    if (this.especialidad == '11') {
+                        this.otherSpecial = true;
+                        this.especialidad = '';
+                    }
+                },
+                cleanOtheProf() {
+                    this.otherSpecial = false;
+                    this.especialidad = '';
+                },
+                checkpassword() {
+                    if (this.password != this.confirmpassword) {
+                        this.passwordchecked = false;
+                        this.passwordmessage = "¡Las contraseñas no coinciden!";
+                    } else {
+                        if (this.password.length < 8) {
+                            this.passwordchecked = false;
+                            this.passwordmessage = "Contraseña demasiado corta. Mínimo 8 caracteres.";
+                        } else {
+                            this.passwordchecked = true;
+                            this.passwordmessage = "";
+                        }
+                    }
+                },
+                fileChosen(event) {
+                    this.fileToDataUrl(event, src => this.imageUrl = src)
+                },
+
+                fileToDataUrl(event, callback) {
+                    if (!event.target.files.length) return
+
+                    let file = event.target.files[0],
+                        reader = new FileReader()
+
+                    reader.readAsDataURL(file)
+                    reader.onload = e => callback(e.target.result)
+                },
+                toggleType(type) {
+                    console.log(type);
+                    if (type == 'isPro') {
+                        this.isPro = true;
+                        this.isInst = false;
+                        this.userType = type;
+                    } else if (type == 'isInst') {
+                        this.isPro = false;
+                        this.isInst = true;
+                        this.userType = type;
+                    } else {
+                        console.log('nada');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

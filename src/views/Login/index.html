@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="xOGCYi7oYQKyeMfSsS58XOtA5BldJERYZkoPseka">
+
+    <title>Informental</title>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="http://www.web.informental.com.ar/css/app.css">
+
+    <!-- Scripts -->
+    <script src="http://www.web.informental.com.ar/js/app.js" defer=""></script>
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="http://www.web.informental.com.ar/manifest.json">
+    <!-- Chrome for Android theme color -->
+    <meta name="theme-color" content="#000000">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="VinculaT">
+    <link rel="icon" sizes="512x512" href="/images/icons/icon-512x512.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="VinculaT">
+    <link rel="apple-touch-icon" href="/images/icons/icon-512x512.png">
+
+
+    <link href="/images/icons/splash-640x1136.png"
+        media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-750x1334.png"
+        media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1242x2208.png"
+        media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1125x2436.png"
+        media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-828x1792.png"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1242x2688.png"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1536x2048.png"
+        media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1668x2224.png"
+        media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1668x2388.png"
+        media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-2048x2732.png"
+        media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+
+    <!-- Tile for Win8 -->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/icons/icon-512x512.png">
+
+    <script type="text/javascript">
+        // Initialize the service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/serviceworker.js', {
+                scope: '.'
+            }).then(function (registration) {
+                // Registration was successful
+                console.log('Laravel PWA: ServiceWorker registration successful with scope: ', registration.scope);
+            }, function (err) {
+                // registration failed :(
+                console.log('Laravel PWA: ServiceWorker registration failed: ', err);
+            });
+        }
+    </script>
+</head>
+
+<body class="bg-white lg:bg-background h-screen overflow-y-hidden">
+    <div class="font-sans text-gray-900 antialiased ">
+        <div class="">
+
+            <div
+                class=" min-h-full w-auto mt-3 lg:my-6 md:w-6/12 mx-auto px-7 justify-center py-20 lg:bg-white lg:rounded-lg lg:shadow-md">
+
+                <div class="flex justify-center">
+                    <img src="http://www.web.informental.com.ar/img/logo-informental.jpg" alt="" class="w-auto h-40">
+                </div>
+
+                <!-- Session Status -->
+
+                <!-- Validation Errors -->
+
+
+                <form method="POST" action="http://www.web.informental.com.ar/login">
+                    <input type="hidden" name="_token" value="xOGCYi7oYQKyeMfSsS58XOtA5BldJERYZkoPseka">
+                    <div class="w-full md:w-10/12 lg:w-1/2 mx-auto mt-10 md:mt-14">
+
+
+                        <div class="mt-5">
+                            <label for="" class="text-base text-text-300">Usuario</label>
+
+                            <div class="relative mt-1">
+                                <div
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-text-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <input id="email" type="email" name="email" :value="old('email')" class="input-icon"
+                                    placeholder="Usuario" required="" autofocus="">
+                            </div>
+                        </div>
+
+
+                        <div class="mt-5">
+                            <label for="" class="text-base text-text-300">Contraseña</label>
+
+                            <div class="relative mt-1">
+                                <div
+                                    class="inline-flex items-center justify-center absolute left-0 top-0 h-full w-10 text-text-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4">
+                                        </path>
+                                    </svg>
+                                </div>
+
+                                <div class="" x-data="{ show: true }">
+                                    <input class="input-icon" placeholder="Contraseña" id="password" name="password"
+                                        :type="show ? 'password' : 'text'" type="password">
+
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300 block"
+                                            fill="none" @click="show = !show" :class="{'hidden': !show, 'block':show }"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                            </path>
+                                        </svg>
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 text-text-300 hidden"
+                                            fill="none" @click="show = !show" :class="{'block': !show, 'hidden':show }"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                            </path>
+                                        </svg>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Remember Me -->
+                        <div class="block md:flex items-center justify-between mt-5">
+                            <div>
+
+                                <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out text-blue-500 hover:underline"
+                                    href="http://www.web.informental.com.ar/forgot-password">Olvidé mi contraseña</a>
+                            </div>
+
+
+                            <div class="mt-6 md:mt-0">
+                                <button class="btn btn-primary w-full" type="submit">
+                                    Ingresar
+                                    <svg class="w-5 h-5 inline-block" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center mt-5">
+
+                            <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out text-blue-500 hover:underline"
+                                href="http://www.web.informental.com.ar/register">Registrarse por primera vez</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

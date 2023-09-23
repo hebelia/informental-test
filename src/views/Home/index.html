@@ -1,0 +1,2206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="OebQZLyxJBWuNoq12IzXZzPbAwPEtHZuAVxnxZjL">
+
+    <title>Informental</title>
+
+    <link rel="shortcut icon" href="https://web.informental.com.ar/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,500,600">
+
+    <link href="/css/app.css?id=d9cd415d7cf524f6176c" rel="stylesheet">
+    <script src="https://web.informental.com.ar/assets/js/scroll.js"></script>
+    <script src="/js/app.js?id=bed82e13994127a43fff" defer=""></script>
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css" rel="stylesheet">
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/wordcloud.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js"></script>
+
+
+    <style>
+        input:checked+svg {
+            display: block;
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+
+    <!-- Livewire Styles -->
+    <style>
+        [wire\:loading],
+        [wire\:loading\.delay],
+        [wire\:loading\.inline-block],
+        [wire\:loading\.inline],
+        [wire\:loading\.block],
+        [wire\:loading\.flex],
+        [wire\:loading\.table],
+        [wire\:loading\.grid] {
+            display: none;
+        }
+
+        [wire\:loading\.delay\.shortest],
+        [wire\:loading\.delay\.shorter],
+        [wire\:loading\.delay\.short],
+        [wire\:loading\.delay\.long],
+        [wire\:loading\.delay\.longer],
+        [wire\:loading\.delay\.longest] {
+            display: none;
+        }
+
+        [wire\:offline] {
+            display: none;
+        }
+
+        [wire\:dirty]:not(textarea):not(input):not(select) {
+            display: none;
+        }
+
+        input:-webkit-autofill,
+        select:-webkit-autofill,
+        textarea:-webkit-autofill {
+            animation-duration: 50000s;
+            animation-name: livewireautofill;
+        }
+
+        @keyframes livewireautofill {
+            from {}
+        }
+    </style>
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="https://web.informental.com.ar/manifest.json">
+    <!-- Chrome for Android theme color -->
+    <meta name="theme-color" content="#000000">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="VinculaT">
+    <link rel="icon" sizes="512x512" href="/images/icons/icon-512x512.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="VinculaT">
+    <link rel="apple-touch-icon" href="/images/icons/icon-512x512.png">
+
+
+    <link href="/images/icons/splash-640x1136.png"
+        media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-750x1334.png"
+        media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1242x2208.png"
+        media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1125x2436.png"
+        media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-828x1792.png"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1242x2688.png"
+        media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1536x2048.png"
+        media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1668x2224.png"
+        media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-1668x2388.png"
+        media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+    <link href="/images/icons/splash-2048x2732.png"
+        media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)"
+        rel="apple-touch-startup-image">
+
+    <!-- Tile for Win8 -->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/icons/icon-512x512.png">
+
+    <script type="text/javascript">
+        // Initialize the service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/serviceworker.js', {
+                scope: '.'
+            }).then(function (registration) {
+                // Registration was successful
+                console.log('Laravel PWA: ServiceWorker registration successful with scope: ', registration.scope);
+            }, function (err) {
+                // registration failed :(
+                console.log('Laravel PWA: ServiceWorker registration failed: ', err);
+            });
+        }
+    </script>
+    <style>
+        .swal2-popup.swal2-toast {
+            box-sizing: border-box;
+            grid-column: 1/4 !important;
+            grid-row: 1/4 !important;
+            grid-template-columns: 1fr 99fr 1fr;
+            padding: 1em;
+            overflow-y: hidden;
+            background: #fff;
+            box-shadow: 0 0 .625em #d9d9d9
+        }
+
+        .swal2-popup.swal2-toast>* {
+            grid-column: 2
+        }
+
+        .swal2-popup.swal2-toast .swal2-title {
+            margin: 1em;
+            padding: 0;
+            font-size: 1em;
+            text-align: initial
+        }
+
+        .swal2-popup.swal2-toast .swal2-loading {
+            justify-content: center
+        }
+
+        .swal2-popup.swal2-toast .swal2-input {
+            height: 2em;
+            margin: .5em;
+            font-size: 1em
+        }
+
+        .swal2-popup.swal2-toast .swal2-validation-message {
+            font-size: 1em
+        }
+
+        .swal2-popup.swal2-toast .swal2-footer {
+            margin: .5em 0 0;
+            padding: .5em 0 0;
+            font-size: .8em
+        }
+
+        .swal2-popup.swal2-toast .swal2-close {
+            grid-column: 3/3;
+            grid-row: 1/99;
+            align-self: center;
+            width: .8em;
+            height: .8em;
+            margin: 0;
+            font-size: 2em
+        }
+
+        .swal2-popup.swal2-toast .swal2-html-container {
+            margin: 1em;
+            padding: 0;
+            font-size: 1em;
+            text-align: initial
+        }
+
+        .swal2-popup.swal2-toast .swal2-html-container:empty {
+            padding: 0
+        }
+
+        .swal2-popup.swal2-toast .swal2-loader {
+            grid-column: 1;
+            grid-row: 1/99;
+            align-self: center;
+            width: 2em;
+            height: 2em;
+            margin: .25em
+        }
+
+        .swal2-popup.swal2-toast .swal2-icon {
+            grid-column: 1;
+            grid-row: 1/99;
+            align-self: center;
+            width: 2em;
+            min-width: 2em;
+            height: 2em;
+            margin: 0 .5em 0 0
+        }
+
+        .swal2-popup.swal2-toast .swal2-icon .swal2-icon-content {
+            display: flex;
+            align-items: center;
+            font-size: 1.8em;
+            font-weight: 700
+        }
+
+        .swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring {
+            width: 2em;
+            height: 2em
+        }
+
+        .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+            top: .875em;
+            width: 1.375em
+        }
+
+        .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left] {
+            left: .3125em
+        }
+
+        .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right] {
+            right: .3125em
+        }
+
+        .swal2-popup.swal2-toast .swal2-actions {
+            justify-content: flex-start;
+            height: auto;
+            margin: 0;
+            margin-top: .3125em;
+            padding: 0
+        }
+
+        .swal2-popup.swal2-toast .swal2-styled {
+            margin: .25em .5em;
+            padding: .4em .6em;
+            font-size: 1em
+        }
+
+        .swal2-popup.swal2-toast .swal2-styled:focus {
+            box-shadow: 0 0 0 1px #fff, 0 0 0 3px rgba(100, 150, 200, .5)
+        }
+
+        .swal2-popup.swal2-toast .swal2-success {
+            border-color: #a5dc86
+        }
+
+        .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line] {
+            position: absolute;
+            width: 1.6em;
+            height: 3em;
+            transform: rotate(45deg);
+            border-radius: 50%
+        }
+
+        .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left] {
+            top: -.8em;
+            left: -.5em;
+            transform: rotate(-45deg);
+            transform-origin: 2em 2em;
+            border-radius: 4em 0 0 4em
+        }
+
+        .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right] {
+            top: -.25em;
+            left: .9375em;
+            transform-origin: 0 1.5em;
+            border-radius: 0 4em 4em 0
+        }
+
+        .swal2-popup.swal2-toast .swal2-success .swal2-success-ring {
+            width: 2em;
+            height: 2em
+        }
+
+        .swal2-popup.swal2-toast .swal2-success .swal2-success-fix {
+            top: 0;
+            left: .4375em;
+            width: .4375em;
+            height: 2.6875em
+        }
+
+        .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line] {
+            height: .3125em
+        }
+
+        .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip] {
+            top: 1.125em;
+            left: .1875em;
+            width: .75em
+        }
+
+        .swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long] {
+            top: .9375em;
+            right: .1875em;
+            width: 1.375em
+        }
+
+        .swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-tip {
+            -webkit-animation: swal2-toast-animate-success-line-tip .75s;
+            animation: swal2-toast-animate-success-line-tip .75s
+        }
+
+        .swal2-popup.swal2-toast .swal2-success.swal2-icon-show .swal2-success-line-long {
+            -webkit-animation: swal2-toast-animate-success-line-long .75s;
+            animation: swal2-toast-animate-success-line-long .75s
+        }
+
+        .swal2-popup.swal2-toast.swal2-show {
+            -webkit-animation: swal2-toast-show .5s;
+            animation: swal2-toast-show .5s
+        }
+
+        .swal2-popup.swal2-toast.swal2-hide {
+            -webkit-animation: swal2-toast-hide .1s forwards;
+            animation: swal2-toast-hide .1s forwards
+        }
+
+        .swal2-container {
+            display: grid;
+            position: fixed;
+            z-index: 1060;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            box-sizing: border-box;
+            grid-template-areas: "top-start     top            top-end" "center-start  center         center-end" "bottom-start  bottom-center  bottom-end" "gap gap gap";
+            grid-template-rows: auto auto auto .625em;
+            height: 100%;
+            padding: .625em .625em 0;
+            overflow-x: hidden;
+            transition: background-color .1s;
+            -webkit-overflow-scrolling: touch
+        }
+
+        .swal2-container::after {
+            content: "";
+            grid-column: 1/4;
+            grid-row: 4;
+            height: .625em
+        }
+
+        .swal2-container.swal2-backdrop-show,
+        .swal2-container.swal2-noanimation {
+            background: rgba(0, 0, 0, .4)
+        }
+
+        .swal2-container.swal2-backdrop-hide {
+            background: 0 0 !important
+        }
+
+        .swal2-container.swal2-bottom-start,
+        .swal2-container.swal2-center-start,
+        .swal2-container.swal2-top-start {
+            grid-template-columns: minmax(0, 1fr) auto auto
+        }
+
+        .swal2-container.swal2-bottom,
+        .swal2-container.swal2-center,
+        .swal2-container.swal2-top {
+            grid-template-columns: auto minmax(0, 1fr) auto
+        }
+
+        .swal2-container.swal2-bottom-end,
+        .swal2-container.swal2-center-end,
+        .swal2-container.swal2-top-end {
+            grid-template-columns: auto auto minmax(0, 1fr)
+        }
+
+        .swal2-container.swal2-top-start>.swal2-popup {
+            align-self: start
+        }
+
+        .swal2-container.swal2-top>.swal2-popup {
+            grid-column: 2;
+            align-self: start;
+            justify-self: center
+        }
+
+        .swal2-container.swal2-top-end>.swal2-popup,
+        .swal2-container.swal2-top-right>.swal2-popup {
+            grid-column: 3;
+            align-self: start;
+            justify-self: end
+        }
+
+        .swal2-container.swal2-center-left>.swal2-popup,
+        .swal2-container.swal2-center-start>.swal2-popup {
+            grid-row: 2;
+            align-self: center
+        }
+
+        .swal2-container.swal2-center>.swal2-popup {
+            grid-column: 2;
+            grid-row: 2;
+            align-self: center;
+            justify-self: center
+        }
+
+        .swal2-container.swal2-center-end>.swal2-popup,
+        .swal2-container.swal2-center-right>.swal2-popup {
+            grid-column: 3;
+            grid-row: 2;
+            align-self: center;
+            justify-self: end
+        }
+
+        .swal2-container.swal2-bottom-left>.swal2-popup,
+        .swal2-container.swal2-bottom-start>.swal2-popup {
+            grid-column: 1;
+            grid-row: 3;
+            align-self: end
+        }
+
+        .swal2-container.swal2-bottom>.swal2-popup {
+            grid-column: 2;
+            grid-row: 3;
+            justify-self: center;
+            align-self: end
+        }
+
+        .swal2-container.swal2-bottom-end>.swal2-popup,
+        .swal2-container.swal2-bottom-right>.swal2-popup {
+            grid-column: 3;
+            grid-row: 3;
+            align-self: end;
+            justify-self: end
+        }
+
+        .swal2-container.swal2-grow-fullscreen>.swal2-popup,
+        .swal2-container.swal2-grow-row>.swal2-popup {
+            grid-column: 1/4;
+            width: 100%
+        }
+
+        .swal2-container.swal2-grow-column>.swal2-popup,
+        .swal2-container.swal2-grow-fullscreen>.swal2-popup {
+            grid-row: 1/4;
+            align-self: stretch
+        }
+
+        .swal2-container.swal2-no-transition {
+            transition: none !important
+        }
+
+        .swal2-popup {
+            display: none;
+            position: relative;
+            box-sizing: border-box;
+            width: 32em;
+            max-width: 100%;
+            padding: 0 0 1.25em;
+            border: none;
+            border-radius: 5px;
+            background: #fff;
+            font-family: inherit;
+            font-size: 1rem
+        }
+
+        .swal2-popup:focus {
+            outline: 0
+        }
+
+        .swal2-popup.swal2-loading {
+            overflow-y: hidden
+        }
+
+        .swal2-title {
+            position: relative;
+            max-width: 100%;
+            margin: 0;
+            padding: .8em 1em 0;
+            color: #595959;
+            font-size: 1.875em;
+            font-weight: 600;
+            text-align: center;
+            text-transform: none;
+            word-wrap: break-word
+        }
+
+        .swal2-actions {
+            display: flex;
+            z-index: 1;
+            box-sizing: border-box;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 1.25em auto 0;
+            padding: 0
+        }
+
+        .swal2-actions:not(.swal2-loading) .swal2-styled[disabled] {
+            opacity: .4
+        }
+
+        .swal2-actions:not(.swal2-loading) .swal2-styled:hover {
+            background-image: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .1))
+        }
+
+        .swal2-actions:not(.swal2-loading) .swal2-styled:active {
+            background-image: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2))
+        }
+
+        .swal2-loader {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 2.2em;
+            height: 2.2em;
+            margin: 0 1.875em;
+            -webkit-animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+            animation: swal2-rotate-loading 1.5s linear 0s infinite normal;
+            border-width: .25em;
+            border-style: solid;
+            border-radius: 100%;
+            border-color: #2778c4 transparent #2778c4 transparent
+        }
+
+        .swal2-styled {
+            margin: .3125em;
+            padding: .625em 1.1em;
+            transition: box-shadow .1s;
+            box-shadow: 0 0 0 3px transparent;
+            font-weight: 500
+        }
+
+        .swal2-styled:not([disabled]) {
+            cursor: pointer
+        }
+
+        .swal2-styled.swal2-confirm {
+            border: 0;
+            border-radius: .25em;
+            background: initial;
+            background-color: #7367f0;
+            color: #fff;
+            font-size: 1em
+        }
+
+        .swal2-styled.swal2-confirm:focus {
+            box-shadow: 0 0 0 3px rgba(115, 103, 240, .5)
+        }
+
+        .swal2-styled.swal2-deny {
+            border: 0;
+            border-radius: .25em;
+            background: initial;
+            background-color: #ea5455;
+            color: #fff;
+            font-size: 1em
+        }
+
+        .swal2-styled.swal2-deny:focus {
+            box-shadow: 0 0 0 3px rgba(234, 84, 85, .5)
+        }
+
+        .swal2-styled.swal2-cancel {
+            border: 0;
+            border-radius: .25em;
+            background: initial;
+            background-color: #6e7d88;
+            color: #fff;
+            font-size: 1em
+        }
+
+        .swal2-styled.swal2-cancel:focus {
+            box-shadow: 0 0 0 3px rgba(110, 125, 136, .5)
+        }
+
+        .swal2-styled.swal2-default-outline:focus {
+            box-shadow: 0 0 0 3px rgba(100, 150, 200, .5)
+        }
+
+        .swal2-styled:focus {
+            outline: 0
+        }
+
+        .swal2-styled::-moz-focus-inner {
+            border: 0
+        }
+
+        .swal2-footer {
+            justify-content: center;
+            margin: 1em 0 0;
+            padding: 1em 1em 0;
+            border-top: 1px solid #eee;
+            color: #545454;
+            font-size: 1em
+        }
+
+        .swal2-timer-progress-bar-container {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            grid-column: auto !important;
+            height: .25em;
+            overflow: hidden;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px
+        }
+
+        .swal2-timer-progress-bar {
+            width: 100%;
+            height: .25em;
+            background: rgba(0, 0, 0, .2)
+        }
+
+        .swal2-image {
+            max-width: 100%;
+            margin: 2em auto 1em
+        }
+
+        .swal2-close {
+            z-index: 2;
+            align-items: center;
+            justify-content: center;
+            width: 1.2em;
+            height: 1.2em;
+            margin-top: 0;
+            margin-right: 0;
+            margin-bottom: -1.2em;
+            padding: 0;
+            overflow: hidden;
+            transition: color .1s, box-shadow .1s;
+            border: none;
+            border-radius: 5px;
+            background: 0 0;
+            color: #ccc;
+            font-family: serif;
+            font-family: monospace;
+            font-size: 2.5em;
+            cursor: pointer;
+            justify-self: end
+        }
+
+        .swal2-close:hover {
+            transform: none;
+            background: 0 0;
+            color: #f27474
+        }
+
+        .swal2-close:focus {
+            outline: 0;
+            box-shadow: inset 0 0 0 3px rgba(100, 150, 200, .5)
+        }
+
+        .swal2-close::-moz-focus-inner {
+            border: 0
+        }
+
+        .swal2-html-container {
+            z-index: 1;
+            justify-content: center;
+            margin: 0;
+            padding: 1em 1.6em .3em;
+            color: #545454;
+            font-size: 1.125em;
+            font-weight: 400;
+            line-height: normal;
+            text-align: center;
+            word-wrap: break-word;
+            word-break: break-word
+        }
+
+        .swal2-checkbox,
+        .swal2-file,
+        .swal2-input,
+        .swal2-radio,
+        .swal2-select,
+        .swal2-textarea {
+            margin: 1em 2em 0
+        }
+
+        .swal2-file,
+        .swal2-input,
+        .swal2-textarea {
+            box-sizing: border-box;
+            width: auto;
+            transition: border-color .1s, box-shadow .1s;
+            border: 1px solid #d9d9d9;
+            border-radius: .1875em;
+            background: inherit;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06), 0 0 0 3px transparent;
+            color: inherit;
+            font-size: 1.125em
+        }
+
+        .swal2-file.swal2-inputerror,
+        .swal2-input.swal2-inputerror,
+        .swal2-textarea.swal2-inputerror {
+            border-color: #f27474 !important;
+            box-shadow: 0 0 2px #f27474 !important
+        }
+
+        .swal2-file:focus,
+        .swal2-input:focus,
+        .swal2-textarea:focus {
+            border: 1px solid #b4dbed;
+            outline: 0;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .06), 0 0 0 3px rgba(100, 150, 200, .5)
+        }
+
+        .swal2-file::-moz-placeholder,
+        .swal2-input::-moz-placeholder,
+        .swal2-textarea::-moz-placeholder {
+            color: #ccc
+        }
+
+        .swal2-file:-ms-input-placeholder,
+        .swal2-input:-ms-input-placeholder,
+        .swal2-textarea:-ms-input-placeholder {
+            color: #ccc
+        }
+
+        .swal2-file::placeholder,
+        .swal2-input::placeholder,
+        .swal2-textarea::placeholder {
+            color: #ccc
+        }
+
+        .swal2-range {
+            margin: 1em 2em 0;
+            background: #fff
+        }
+
+        .swal2-range input {
+            width: 80%
+        }
+
+        .swal2-range output {
+            width: 20%;
+            color: inherit;
+            font-weight: 600;
+            text-align: center
+        }
+
+        .swal2-range input,
+        .swal2-range output {
+            height: 2.625em;
+            padding: 0;
+            font-size: 1.125em;
+            line-height: 2.625em
+        }
+
+        .swal2-input {
+            height: 2.625em;
+            padding: 0 .75em
+        }
+
+        .swal2-input[type=number] {
+            max-width: 10em
+        }
+
+        .swal2-file {
+            width: 75%;
+            margin-right: auto;
+            margin-left: auto;
+            background: inherit;
+            font-size: 1.125em
+        }
+
+        .swal2-textarea {
+            height: 6.75em;
+            padding: .75em
+        }
+
+        .swal2-select {
+            min-width: 50%;
+            max-width: 100%;
+            padding: .375em .625em;
+            background: inherit;
+            color: inherit;
+            font-size: 1.125em
+        }
+
+        .swal2-checkbox,
+        .swal2-radio {
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            color: inherit
+        }
+
+        .swal2-checkbox label,
+        .swal2-radio label {
+            margin: 0 .6em;
+            font-size: 1.125em
+        }
+
+        .swal2-checkbox input,
+        .swal2-radio input {
+            flex-shrink: 0;
+            margin: 0 .4em
+        }
+
+        .swal2-input-label {
+            display: flex;
+            justify-content: center;
+            margin: 1em auto 0
+        }
+
+        .swal2-validation-message {
+            align-items: center;
+            justify-content: center;
+            margin: 1em 0 0;
+            padding: .625em;
+            overflow: hidden;
+            background: #f0f0f0;
+            color: #666;
+            font-size: 1em;
+            font-weight: 300
+        }
+
+        .swal2-validation-message::before {
+            content: "!";
+            display: inline-block;
+            width: 1.5em;
+            min-width: 1.5em;
+            height: 1.5em;
+            margin: 0 .625em;
+            border-radius: 50%;
+            background-color: #f27474;
+            color: #fff;
+            font-weight: 600;
+            line-height: 1.5em;
+            text-align: center
+        }
+
+        .swal2-icon {
+            position: relative;
+            box-sizing: content-box;
+            justify-content: center;
+            width: 5em;
+            height: 5em;
+            margin: 2.5em auto .6em;
+            border: .25em solid transparent;
+            border-radius: 50%;
+            border-color: #000;
+            font-family: inherit;
+            line-height: 5em;
+            cursor: default;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .swal2-icon .swal2-icon-content {
+            display: flex;
+            align-items: center;
+            font-size: 3.75em
+        }
+
+        .swal2-icon.swal2-error {
+            border-color: #f27474;
+            color: #f27474
+        }
+
+        .swal2-icon.swal2-error .swal2-x-mark {
+            position: relative;
+            flex-grow: 1
+        }
+
+        .swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+            display: block;
+            position: absolute;
+            top: 2.3125em;
+            width: 2.9375em;
+            height: .3125em;
+            border-radius: .125em;
+            background-color: #f27474
+        }
+
+        .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left] {
+            left: 1.0625em;
+            transform: rotate(45deg)
+        }
+
+        .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right] {
+            right: 1em;
+            transform: rotate(-45deg)
+        }
+
+        .swal2-icon.swal2-error.swal2-icon-show {
+            -webkit-animation: swal2-animate-error-icon .5s;
+            animation: swal2-animate-error-icon .5s
+        }
+
+        .swal2-icon.swal2-error.swal2-icon-show .swal2-x-mark {
+            -webkit-animation: swal2-animate-error-x-mark .5s;
+            animation: swal2-animate-error-x-mark .5s
+        }
+
+        .swal2-icon.swal2-warning {
+            border-color: #facea8;
+            color: #f8bb86
+        }
+
+        .swal2-icon.swal2-info {
+            border-color: #9de0f6;
+            color: #3fc3ee
+        }
+
+        .swal2-icon.swal2-question {
+            border-color: #c9dae1;
+            color: #87adbd
+        }
+
+        .swal2-icon.swal2-success {
+            border-color: #a5dc86;
+            color: #a5dc86
+        }
+
+        .swal2-icon.swal2-success [class^=swal2-success-circular-line] {
+            position: absolute;
+            width: 3.75em;
+            height: 7.5em;
+            transform: rotate(45deg);
+            border-radius: 50%
+        }
+
+        .swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left] {
+            top: -.4375em;
+            left: -2.0635em;
+            transform: rotate(-45deg);
+            transform-origin: 3.75em 3.75em;
+            border-radius: 7.5em 0 0 7.5em
+        }
+
+        .swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right] {
+            top: -.6875em;
+            left: 1.875em;
+            transform: rotate(-45deg);
+            transform-origin: 0 3.75em;
+            border-radius: 0 7.5em 7.5em 0
+        }
+
+        .swal2-icon.swal2-success .swal2-success-ring {
+            position: absolute;
+            z-index: 2;
+            top: -.25em;
+            left: -.25em;
+            box-sizing: content-box;
+            width: 100%;
+            height: 100%;
+            border: .25em solid rgba(165, 220, 134, .3);
+            border-radius: 50%
+        }
+
+        .swal2-icon.swal2-success .swal2-success-fix {
+            position: absolute;
+            z-index: 1;
+            top: .5em;
+            left: 1.625em;
+            width: .4375em;
+            height: 5.625em;
+            transform: rotate(-45deg)
+        }
+
+        .swal2-icon.swal2-success [class^=swal2-success-line] {
+            display: block;
+            position: absolute;
+            z-index: 2;
+            height: .3125em;
+            border-radius: .125em;
+            background-color: #a5dc86
+        }
+
+        .swal2-icon.swal2-success [class^=swal2-success-line][class$=tip] {
+            top: 2.875em;
+            left: .8125em;
+            width: 1.5625em;
+            transform: rotate(45deg)
+        }
+
+        .swal2-icon.swal2-success [class^=swal2-success-line][class$=long] {
+            top: 2.375em;
+            right: .5em;
+            width: 2.9375em;
+            transform: rotate(-45deg)
+        }
+
+        .swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-tip {
+            -webkit-animation: swal2-animate-success-line-tip .75s;
+            animation: swal2-animate-success-line-tip .75s
+        }
+
+        .swal2-icon.swal2-success.swal2-icon-show .swal2-success-line-long {
+            -webkit-animation: swal2-animate-success-line-long .75s;
+            animation: swal2-animate-success-line-long .75s
+        }
+
+        .swal2-icon.swal2-success.swal2-icon-show .swal2-success-circular-line-right {
+            -webkit-animation: swal2-rotate-success-circular-line 4.25s ease-in;
+            animation: swal2-rotate-success-circular-line 4.25s ease-in
+        }
+
+        .swal2-progress-steps {
+            flex-wrap: wrap;
+            align-items: center;
+            max-width: 100%;
+            margin: 1.25em auto;
+            padding: 0;
+            background: inherit;
+            font-weight: 600
+        }
+
+        .swal2-progress-steps li {
+            display: inline-block;
+            position: relative
+        }
+
+        .swal2-progress-steps .swal2-progress-step {
+            z-index: 20;
+            flex-shrink: 0;
+            width: 2em;
+            height: 2em;
+            border-radius: 2em;
+            background: #2778c4;
+            color: #fff;
+            line-height: 2em;
+            text-align: center
+        }
+
+        .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step {
+            background: #2778c4
+        }
+
+        .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step {
+            background: #add8e6;
+            color: #fff
+        }
+
+        .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line {
+            background: #add8e6
+        }
+
+        .swal2-progress-steps .swal2-progress-step-line {
+            z-index: 10;
+            flex-shrink: 0;
+            width: 2.5em;
+            height: .4em;
+            margin: 0 -1px;
+            background: #2778c4
+        }
+
+        [class^=swal2] {
+            -webkit-tap-highlight-color: transparent
+        }
+
+        .swal2-show {
+            -webkit-animation: swal2-show .3s;
+            animation: swal2-show .3s
+        }
+
+        .swal2-hide {
+            -webkit-animation: swal2-hide .15s forwards;
+            animation: swal2-hide .15s forwards
+        }
+
+        .swal2-noanimation {
+            transition: none
+        }
+
+        .swal2-scrollbar-measure {
+            position: absolute;
+            top: -9999px;
+            width: 50px;
+            height: 50px;
+            overflow: scroll
+        }
+
+        .swal2-rtl .swal2-close {
+            margin-right: initial;
+            margin-left: 0
+        }
+
+        .swal2-rtl .swal2-timer-progress-bar {
+            right: 0;
+            left: auto
+        }
+
+        @-webkit-keyframes swal2-toast-show {
+            0% {
+                transform: translateY(-.625em) rotateZ(2deg)
+            }
+
+            33% {
+                transform: translateY(0) rotateZ(-2deg)
+            }
+
+            66% {
+                transform: translateY(.3125em) rotateZ(2deg)
+            }
+
+            100% {
+                transform: translateY(0) rotateZ(0)
+            }
+        }
+
+        @keyframes swal2-toast-show {
+            0% {
+                transform: translateY(-.625em) rotateZ(2deg)
+            }
+
+            33% {
+                transform: translateY(0) rotateZ(-2deg)
+            }
+
+            66% {
+                transform: translateY(.3125em) rotateZ(2deg)
+            }
+
+            100% {
+                transform: translateY(0) rotateZ(0)
+            }
+        }
+
+        @-webkit-keyframes swal2-toast-hide {
+            100% {
+                transform: rotateZ(1deg);
+                opacity: 0
+            }
+        }
+
+        @keyframes swal2-toast-hide {
+            100% {
+                transform: rotateZ(1deg);
+                opacity: 0
+            }
+        }
+
+        @-webkit-keyframes swal2-toast-animate-success-line-tip {
+            0% {
+                top: .5625em;
+                left: .0625em;
+                width: 0
+            }
+
+            54% {
+                top: .125em;
+                left: .125em;
+                width: 0
+            }
+
+            70% {
+                top: .625em;
+                left: -.25em;
+                width: 1.625em
+            }
+
+            84% {
+                top: 1.0625em;
+                left: .75em;
+                width: .5em
+            }
+
+            100% {
+                top: 1.125em;
+                left: .1875em;
+                width: .75em
+            }
+        }
+
+        @keyframes swal2-toast-animate-success-line-tip {
+            0% {
+                top: .5625em;
+                left: .0625em;
+                width: 0
+            }
+
+            54% {
+                top: .125em;
+                left: .125em;
+                width: 0
+            }
+
+            70% {
+                top: .625em;
+                left: -.25em;
+                width: 1.625em
+            }
+
+            84% {
+                top: 1.0625em;
+                left: .75em;
+                width: .5em
+            }
+
+            100% {
+                top: 1.125em;
+                left: .1875em;
+                width: .75em
+            }
+        }
+
+        @-webkit-keyframes swal2-toast-animate-success-line-long {
+            0% {
+                top: 1.625em;
+                right: 1.375em;
+                width: 0
+            }
+
+            65% {
+                top: 1.25em;
+                right: .9375em;
+                width: 0
+            }
+
+            84% {
+                top: .9375em;
+                right: 0;
+                width: 1.125em
+            }
+
+            100% {
+                top: .9375em;
+                right: .1875em;
+                width: 1.375em
+            }
+        }
+
+        @keyframes swal2-toast-animate-success-line-long {
+            0% {
+                top: 1.625em;
+                right: 1.375em;
+                width: 0
+            }
+
+            65% {
+                top: 1.25em;
+                right: .9375em;
+                width: 0
+            }
+
+            84% {
+                top: .9375em;
+                right: 0;
+                width: 1.125em
+            }
+
+            100% {
+                top: .9375em;
+                right: .1875em;
+                width: 1.375em
+            }
+        }
+
+        @-webkit-keyframes swal2-show {
+            0% {
+                transform: scale(.7)
+            }
+
+            45% {
+                transform: scale(1.05)
+            }
+
+            80% {
+                transform: scale(.95)
+            }
+
+            100% {
+                transform: scale(1)
+            }
+        }
+
+        @keyframes swal2-show {
+            0% {
+                transform: scale(.7)
+            }
+
+            45% {
+                transform: scale(1.05)
+            }
+
+            80% {
+                transform: scale(.95)
+            }
+
+            100% {
+                transform: scale(1)
+            }
+        }
+
+        @-webkit-keyframes swal2-hide {
+            0% {
+                transform: scale(1);
+                opacity: 1
+            }
+
+            100% {
+                transform: scale(.5);
+                opacity: 0
+            }
+        }
+
+        @keyframes swal2-hide {
+            0% {
+                transform: scale(1);
+                opacity: 1
+            }
+
+            100% {
+                transform: scale(.5);
+                opacity: 0
+            }
+        }
+
+        @-webkit-keyframes swal2-animate-success-line-tip {
+            0% {
+                top: 1.1875em;
+                left: .0625em;
+                width: 0
+            }
+
+            54% {
+                top: 1.0625em;
+                left: .125em;
+                width: 0
+            }
+
+            70% {
+                top: 2.1875em;
+                left: -.375em;
+                width: 3.125em
+            }
+
+            84% {
+                top: 3em;
+                left: 1.3125em;
+                width: 1.0625em
+            }
+
+            100% {
+                top: 2.8125em;
+                left: .8125em;
+                width: 1.5625em
+            }
+        }
+
+        @keyframes swal2-animate-success-line-tip {
+            0% {
+                top: 1.1875em;
+                left: .0625em;
+                width: 0
+            }
+
+            54% {
+                top: 1.0625em;
+                left: .125em;
+                width: 0
+            }
+
+            70% {
+                top: 2.1875em;
+                left: -.375em;
+                width: 3.125em
+            }
+
+            84% {
+                top: 3em;
+                left: 1.3125em;
+                width: 1.0625em
+            }
+
+            100% {
+                top: 2.8125em;
+                left: .8125em;
+                width: 1.5625em
+            }
+        }
+
+        @-webkit-keyframes swal2-animate-success-line-long {
+            0% {
+                top: 3.375em;
+                right: 2.875em;
+                width: 0
+            }
+
+            65% {
+                top: 3.375em;
+                right: 2.875em;
+                width: 0
+            }
+
+            84% {
+                top: 2.1875em;
+                right: 0;
+                width: 3.4375em
+            }
+
+            100% {
+                top: 2.375em;
+                right: .5em;
+                width: 2.9375em
+            }
+        }
+
+        @keyframes swal2-animate-success-line-long {
+            0% {
+                top: 3.375em;
+                right: 2.875em;
+                width: 0
+            }
+
+            65% {
+                top: 3.375em;
+                right: 2.875em;
+                width: 0
+            }
+
+            84% {
+                top: 2.1875em;
+                right: 0;
+                width: 3.4375em
+            }
+
+            100% {
+                top: 2.375em;
+                right: .5em;
+                width: 2.9375em
+            }
+        }
+
+        @-webkit-keyframes swal2-rotate-success-circular-line {
+            0% {
+                transform: rotate(-45deg)
+            }
+
+            5% {
+                transform: rotate(-45deg)
+            }
+
+            12% {
+                transform: rotate(-405deg)
+            }
+
+            100% {
+                transform: rotate(-405deg)
+            }
+        }
+
+        @keyframes swal2-rotate-success-circular-line {
+            0% {
+                transform: rotate(-45deg)
+            }
+
+            5% {
+                transform: rotate(-45deg)
+            }
+
+            12% {
+                transform: rotate(-405deg)
+            }
+
+            100% {
+                transform: rotate(-405deg)
+            }
+        }
+
+        @-webkit-keyframes swal2-animate-error-x-mark {
+            0% {
+                margin-top: 1.625em;
+                transform: scale(.4);
+                opacity: 0
+            }
+
+            50% {
+                margin-top: 1.625em;
+                transform: scale(.4);
+                opacity: 0
+            }
+
+            80% {
+                margin-top: -.375em;
+                transform: scale(1.15)
+            }
+
+            100% {
+                margin-top: 0;
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        @keyframes swal2-animate-error-x-mark {
+            0% {
+                margin-top: 1.625em;
+                transform: scale(.4);
+                opacity: 0
+            }
+
+            50% {
+                margin-top: 1.625em;
+                transform: scale(.4);
+                opacity: 0
+            }
+
+            80% {
+                margin-top: -.375em;
+                transform: scale(1.15)
+            }
+
+            100% {
+                margin-top: 0;
+                transform: scale(1);
+                opacity: 1
+            }
+        }
+
+        @-webkit-keyframes swal2-animate-error-icon {
+            0% {
+                transform: rotateX(100deg);
+                opacity: 0
+            }
+
+            100% {
+                transform: rotateX(0);
+                opacity: 1
+            }
+        }
+
+        @keyframes swal2-animate-error-icon {
+            0% {
+                transform: rotateX(100deg);
+                opacity: 0
+            }
+
+            100% {
+                transform: rotateX(0);
+                opacity: 1
+            }
+        }
+
+        @-webkit-keyframes swal2-rotate-loading {
+            0% {
+                transform: rotate(0)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        @keyframes swal2-rotate-loading {
+            0% {
+                transform: rotate(0)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+            overflow: hidden
+        }
+
+        body.swal2-height-auto {
+            height: auto !important
+        }
+
+        body.swal2-no-backdrop .swal2-container {
+            background-color: transparent !important;
+            pointer-events: none
+        }
+
+        body.swal2-no-backdrop .swal2-container .swal2-popup {
+            pointer-events: all
+        }
+
+        body.swal2-no-backdrop .swal2-container .swal2-modal {
+            box-shadow: 0 0 10px rgba(0, 0, 0, .4)
+        }
+
+        @media print {
+            body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+                overflow-y: scroll !important
+            }
+
+            body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true] {
+                display: none
+            }
+
+            body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container {
+                position: static !important
+            }
+        }
+
+        body.swal2-toast-shown .swal2-container {
+            box-sizing: border-box;
+            width: 360px;
+            max-width: 100%;
+            background-color: transparent
+        }
+
+        body.swal2-toast-shown .swal2-container.swal2-top {
+            top: 0;
+            right: auto;
+            bottom: auto;
+            left: 50%;
+            transform: translateX(-50%)
+        }
+
+        body.swal2-toast-shown .swal2-container.swal2-top-end,
+        body.swal2-toast-shown .swal2-container.swal2-top-right {
+            top: 0;
+            right: 0;
+            bottom: auto;
+            left: auto
+        }
+
+        body.swal2-toast-shown .swal2-container.swal2-top-left,
+        body.swal2-toast-shown .swal2-container.swal2-top-start {
+            top: 0;
+            right: auto;
+            bottom: auto;
+            left: 0
+        }
+
+        body.swal2-toast-shown .swal2-container.swal2-center-left,
+        body.swal2-toast-shown .swal2-container.swal2-center-start {
+            top: 50%;
+            right: auto;
+            bottom: auto;
+            left: 0;
+            transform: translateY(-50%)
+        }
+
+        body.swal2-toast-shown .swal2-container.swal2-center {
+            top: 50%;
+            right: auto;
+            bottom: auto;
+            left: 50%;
+            transform: translate(-50%, -50%)
+        }
+
+        body.swal2-toast-shown .swal2-container.swal2-center-end,
+        body.swal2-toast-shown .swal2-container.swal2-center-right {
+            top: 50%;
+            right: 0;
+            bottom: auto;
+            left: auto;
+            transform: translateY(-50%)
+        }
+
+        body.swal2-toast-shown .swal2-container.swal2-bottom-left,
+        body.swal2-toast-shown .swal2-container.swal2-bottom-start {
+            top: auto;
+            right: auto;
+            bottom: 0;
+            left: 0
+        }
+
+        body.swal2-toast-shown .swal2-container.swal2-bottom {
+            top: auto;
+            right: auto;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%)
+        }
+
+        body.swal2-toast-shown .swal2-container.swal2-bottom-end,
+        body.swal2-toast-shown .swal2-container.swal2-bottom-right {
+            top: auto;
+            right: 0;
+            bottom: 0;
+            left: auto
+        }
+    </style>
+</head>
+
+<body class="">
+
+    <div id="app">
+        <div x-data="{ sidebarOpen: false }" class="flex h-screen bg-gray-200">
+            <div :class="sidebarOpen ? 'block' : 'hidden'" @click="sidebarOpen = false" class="fixed w-full h-full z-20 inset-0 bg-black opacity-50 transition-opacity lg:hidden hidden"></div>
+
+            
+            <div class="block lg:hidden">
+                <div @toggle-nav.window="sidebarOpen = !sidebarOpen" x-show="sidebarOpen" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="-translate-x-full ease-in" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="-translate-x-full ease-in" class="fixed z-40 inset-y-0 left-0 w-56 transition duration-300 transform bg-white overflow-y-auto lg:translate-x-0 lg:static lg:inset-0 h-screen shadow-lg" style="display: none;">
+    <div class="flex items-center justify-center px-6 mt-8 text-green-300">
+        <img src="https://web.informental.com.ar/img/logo-informental.jpg" alt="" class="w-full h-auto">
+    </div>
+
+    <nav class="mt-8">
+        <a class="flex items-center mt-4 py-2 px-6 focus:bg-hover bg-hover border-r-4 border-primary-200" href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-text-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            <span class="mx-3">Inicio</span>
+        </a>
+
+                <a class="flex items-center mt-4 py-2 px-6  focus:bg-hover text-text-base" href="https://web.informental.com.ar/patients">
+            <svg xmlns="http://www.w3.org/2000/svg" class="svg-inline--fa fa-stethoscope fa-w-16 h-6 w-6 text-text-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+            <span class="mx-3">Pacientes</span>
+        </a>
+        
+                <a class="flex items-center mt-4 py-2 px-6 focus:bg-hover text-text-base" href="https://web.informental.com.ar/therapy">
+            <svg class="h-6 w-6 text-text-300" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M4 13C2.89 13 2 13.89 2 15V19C2 20.11 2.89 21 4 21H8C9.11 21 10 20.11 10 19V15C10 13.89 9.11 13 8 13M8.2 14.5L9.26 15.55L5.27 19.5L2.74 16.95L3.81 15.9L5.28 17.39M4 3C2.89 3 2 3.89 2 5V9C2 10.11 2.89 11 4 11H8C9.11 11 10 10.11 10 9V5C10 3.89 9.11 3 8 3M4 5H8V9H4M12 5H22V7H12M12 19V17H22V19M12 11H22V13H12Z"></path>
+            </svg>
+
+            <span class="mx-3">Trackings</span>
+        </a>
+        
+                <a class="flex items-center mt-4 py-2 px-6 focus:bg-hover text-text-base" href="https://web.informental.com.ar/professionals">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-text-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path>
+            </svg>
+
+            <span class="mx-3">Profesionales</span>
+        </a>
+        
+                <a class="flex items-center mt-4 py-2 px-6 focus:bg-hover text-text-base" href="https://web.informental.com.ar/institutions">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-text-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+            <span class="mx-3">Instituciones</span>
+        </a>
+        
+                        <a class="flex items-center mt-4 py-2 px-6 text-text-base focus:bg-hover text-text-base" href="https://web.informental.com.ar/therms">
+            <svg class="svg-inline--fa fa-user-md fa-w-14 h-6 w-6 mx-auto fill-current text-text-300" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><defs></defs><title>n</title><path class="cls-1" d="M123.36472,61.42554,105.03349,24.84444q1.2894-.06886,2.57463-.13979a3.57249,3.57249,0,0,0,0-7.13345c-6.69738-.38391-13.39477-.603-20.09216-.76363q-11.72981-.27228-23.45964-.25871h-.11265q-11.72983-.00938-23.45964.25871c-6.6974.16066-13.39478.37973-20.09216.76363a3.57259,3.57259,0,0,0,0,7.13345q1.28627.072,2.57463.13979L4.63528,61.42554h-1.836v3.91411A14.50191,14.50191,0,0,0,14.66885,79.60028c.03755.00834.073.01461.10848.02086,4.30218.78032,17.87848.78032,22.18066,0,.03548-.00625.073-.01252.1085-.02086A14.50191,14.50191,0,0,0,48.9361,65.33965V61.42554H47.1L28.90444,25.10942c3.85987.1523,7.71973.265,11.5796.35886q9.054.20968,18.11216.2462L53.44275,95.61142a14.31529,14.31529,0,0,0-13.94767,14.31072v1.52933H88.50492v-1.52933A14.31529,14.31529,0,0,0,74.55725,95.61142L69.4038,25.71447q9.05712-.04069,18.11216-.2462c3.85987-.09389,7.71973-.20655,11.5796-.35886L80.9,61.42554H79.0639v3.91411A14.50191,14.50191,0,0,0,90.93351,79.60028c.03547.00834.073.01461.1085.02086,4.30218.78032,17.87848.78032,22.18066,0,.03547-.00625.07093-.01252.10848-.02086a14.50191,14.50191,0,0,0,11.86961-14.26063V61.42554Zm-81.81244,0H10.18513L25.86872,30.12515Zm44.89543,0,15.68357-31.30038,15.68358,31.30038Z"></path></svg>
+            <span class="mx-3 text-sm">Términos y Condiciones</span>
+        </a>
+
+        <a class="flex items-center mt-4 py-2 px-6 text-text-base focus:bg-hover text-text-base" href="https://web.informental.com.ar/aboutus">
+            <svg class="svg-inline--fa fa-user-md fa-w-14 h-6 w-6 text-text-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg>
+            <span class="mx-3">Acerca de...</span>
+        </a>
+        
+
+    </nav>
+</div>
+            </div>
+
+            
+            <div class="hidden lg:block">
+                <div x-data="sideBarDesktop()" x-show="sideBarDeskIsOpen" x-init="listenFullScreen" class="fixed z-30 inset-y-0 left-0 md:w-28 pt-1 transition duration-300 transform bg-white overflow-y-auto scrollbar-none lg:translate-x-0 lg:static lg:inset-0 h-screen shadow-sm">
+    <div class="flex items-center justify-center p-2">
+        <div class="flex items-center">
+            <img src="https://web.informental.com.ar/img/logo-informental.jpg" alt="" class="w-auto h-auto">
+        </div>
+    </div>
+
+    <nav class="mt-6">
+        <div class="mb-2 py-3 text-center hover:bg-hover text-text-300 bg-hover border-r-4 border-primary-200">
+            <a href="/">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <p class="text-sm text-primary-300 mt-1">
+                        Inicio</p>
+                </span>
+            </a>
+        </div>
+
+                <div class="mb-2 w-full text-center hover:bg-hover py-3 transition duration-400 ease-in-out ">
+            <a href="https://web.informental.com.ar/patients">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-text-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <p class="text-sm text-text-base" fill="none" viewbox="0 0 24 24">Pacientes</p>
+                </span>
+            </a>
+        </div>
+        
+                <div class="mb-2 w-full text-center hover:bg-hover py-3 transition duration-400 ease-in-out ">
+            <a href="https://web.informental.com.ar/therapy">
+                <span>
+                    <svg class="h-6 w-6 mx-auto text-text-300" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M4 13C2.89 13 2 13.89 2 15V19C2 20.11 2.89 21 4 21H8C9.11 21 10 20.11 10 19V15C10 13.89 9.11 13 8 13M8.2 14.5L9.26 15.55L5.27 19.5L2.74 16.95L3.81 15.9L5.28 17.39M4 3C2.89 3 2 3.89 2 5V9C2 10.11 2.89 11 4 11H8C9.11 11 10 10.11 10 9V5C10 3.89 9.11 3 8 3M4 5H8V9H4M12 5H22V7H12M12 19V17H22V19M12 11H22V13H12Z"></path>
+                    </svg>
+                    <p class="text-sm text-text-base" fill="none" viewbox="0 0 24 24">Trackings</p>
+                </span>
+            </a>
+        </div>
+        
+                <div class="mb-2 w-full text-center hover:bg-hover py-3 transition duration-400 ease-in-out ">
+            <a href="https://web.informental.com.ar/professionals">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-text-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path>
+                    </svg>
+                    <p class="text-sm text-text-base" fill="none" viewbox="0 0 24 24">Profesionales</p>
+                </span>
+            </a>
+        </div>
+        
+                <div class="mb-2 w-full text-center hover:bg-hover py-3 transition duration-400 ease-in-out ">
+            <a href="https://web.informental.com.ar/institutions">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto text-text-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                    <p class="text-sm text-text-base" fill="none" viewbox="0 0 24 24">Instituciones</p>
+                </span>
+            </a>
+        </div>
+        
+                        <div class="mb-2 w-full text-center hover:bg-hover py-3 transition duration-400 ease-in-out ">
+            <a href="https://web.informental.com.ar/therms">
+
+                <span>
+                    <svg class="h-6 w-6 mx-auto fill-current text-text-300" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><defs></defs><title>n</title><path class="cls-1" d="M123.36472,61.42554,105.03349,24.84444q1.2894-.06886,2.57463-.13979a3.57249,3.57249,0,0,0,0-7.13345c-6.69738-.38391-13.39477-.603-20.09216-.76363q-11.72981-.27228-23.45964-.25871h-.11265q-11.72983-.00938-23.45964.25871c-6.6974.16066-13.39478.37973-20.09216.76363a3.57259,3.57259,0,0,0,0,7.13345q1.28627.072,2.57463.13979L4.63528,61.42554h-1.836v3.91411A14.50191,14.50191,0,0,0,14.66885,79.60028c.03755.00834.073.01461.10848.02086,4.30218.78032,17.87848.78032,22.18066,0,.03548-.00625.073-.01252.1085-.02086A14.50191,14.50191,0,0,0,48.9361,65.33965V61.42554H47.1L28.90444,25.10942c3.85987.1523,7.71973.265,11.5796.35886q9.054.20968,18.11216.2462L53.44275,95.61142a14.31529,14.31529,0,0,0-13.94767,14.31072v1.52933H88.50492v-1.52933A14.31529,14.31529,0,0,0,74.55725,95.61142L69.4038,25.71447q9.05712-.04069,18.11216-.2462c3.85987-.09389,7.71973-.20655,11.5796-.35886L80.9,61.42554H79.0639v3.91411A14.50191,14.50191,0,0,0,90.93351,79.60028c.03547.00834.073.01461.1085.02086,4.30218.78032,17.87848.78032,22.18066,0,.03547-.00625.07093-.01252.10848-.02086a14.50191,14.50191,0,0,0,11.86961-14.26063V61.42554Zm-81.81244,0H10.18513L25.86872,30.12515Zm44.89543,0,15.68357-31.30038,15.68358,31.30038Z"></path></svg>
+                    <p class="text-sm text-text-base" fill="none" viewbox="0 0 24 24">Términos y Condiciones</p>
+                </span>
+            </a>
+        </div>
+        <div class="mb-2 w-full text-center hover:bg-hover py-3 transition duration-400 ease-in-out ">
+            <a href="https://web.informental.com.ar/aboutus">
+                <span>
+                    
+                    <svg class="h-6 w-6 mx-auto text-text-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg>
+                    <p class="text-sm text-text-base" fill="none" viewbox="0 0 24 24">Acerca de...</p>
+                </span>
+            </a>
+        </div>
+        
+
+    </nav>
+</div>
+<script>
+    function sideBarDesktop(){
+        return {
+            sideBarDeskIsOpen:true,
+            listenFullScreen(){
+                document.addEventListener('fullscreenchange', (event) => {
+                    if (document.fullscreenElement) {
+                        this.sideBarDeskIsOpen = false;
+                    } else {
+                        this.sideBarDeskIsOpen = true;
+                    }
+                });
+            }
+        }
+    }
+</script>
+            </div>
+
+            <div class="flex-1 flex flex-col overflow-hidden">
+                
+                <div>
+                    <header x-data="headerData()" x-show="headerIsOpen" x-init="listenHeader" class="flex justify-between items-center py-3 px-6 bg-white shadow-sm z-30">
+
+  <div class="flex items-center">
+    <button @click="$dispatch('toggle-nav')" class="text-gray-500 focus:outline-none lg:hidden">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </button>
+
+    
+    <div class="flex items-center ml-5 md:ml-5 lg:ml-0">
+      <svg class="w-5 h-5 text-text-400 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      
+      <p class="text-text-500 text-lg m-1 font-medium"> ¡Hola Alejandra Osuna! </p>
+    </div>
+  </div>
+
+
+
+  <div class="relative flex items-center space-x-3">
+
+    
+
+    <!-- avatar button -->
+    <div class="relative" x-data="{ isOpen: false }">
+      <button @click="isOpen = !isOpen" class="p-1 bg-gray-200 rounded-full focus:outline-none focus:ring">
+                <svg class="object-cover w-8 h-8 rounded-full" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        
+      </button>
+      <!-- green dot -->
+      <div class="absolute right-0 p-1 bg-green-400 rounded-full bottom-3 animate-ping"></div>
+      <div class="absolute right-0 p-1 bg-green-400 border border-white rounded-full bottom-3"></div>
+
+      <!-- Dropdown card -->
+      <div @click.away="isOpen = false" x-show.transition.opacity="isOpen" class="absolute mt-3 transform -translate-x-48 bg-white rounded-md shadow-lg min-w-max w-56 z-30" style="display: none;">
+        <div class="flex flex-col p-4 space-y-1 font-medium border-b">
+          <span class="text-gray-800">Alejandra Osuna</span>
+          <span class="text-sm text-gray-400">alejandraop391@gmail.com</span>
+        </div>
+        <ul class="flex flex-col p-2 my-2 space-y-1">
+          <li>
+            <a href="https://web.informental.com.ar/users/perfil/edit" class="block px-2 py-1 transition rounded-md hover:bg-gray-100">Mi
+              Perfil</a>
+          </li>
+        </ul>
+        <div class="flex items-center justify-center p-4 text-blue-700 underline border-t">
+          <a class="block px-4 py-2 mt-2 text-sm bg-transparent rounded-md dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="https://web.informental.com.ar/logout" onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">Salir</a>
+          <form id="logout-form" action="https://web.informental.com.ar/logout" method="POST">
+            <input type="hidden" name="_token" value="OebQZLyxJBWuNoq12IzXZzPbAwPEtHZuAVxnxZjL">          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<script>
+  function headerData(){
+        return {
+            headerIsOpen:true,
+            listenHeader(){
+                document.addEventListener('fullscreenchange', (event) => {
+                    if (document.fullscreenElement) {
+                        this.headerIsOpen = false;
+                    } else {
+                        this.headerIsOpen = true;
+                    }
+                });
+            }
+        }
+    }
+</script>                </div>
+
+                
+                <main class="flex-1 overflow-x-hidden bg-background overflow-y-auto scrollbar-thin scrollbar-thumb-green-300 scrollbar-track-white scrollbar-thumb-rounded-full scrollbar-track-rounded-full" @click="sidebarOpen = false">
+                    <div class="mx-auto px-4 md:px-4 py-3 min-h-full">
+
+                        
+<div class="grid grid-cols-1 md:grid-cols-3">
+    <div class="mb-3 md:mb-0">
+        <div class="card min-h-full">
+            <div class="flex flex-col justify-center items-center w-full">
+                <img src="https://web.informental.com.ar/assets/img/qrs/qr_pwa.jpeg" alt="PatientsQR" class="w-24 mb-3">
+                <p class="text-xs text-center">QR para descarga de APP por parte de pacientes</p>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3 md:mb-0">
+        <div class="card min-h-full flex items-center justify-center">
+            <div class="grid grid-cols-4">
+                <div class="flex flex-col justify-center items-center">
+                    <a href="https://api.whatsapp.com/send?phone=5492613652568&amp;text=Hola, los estoy contactando por INFORMENTAL." target="_blank"><img src="https://web.informental.com.ar/assets/img/qrs/WhatsApp_1.png" alt="WhatsApp1" class="w-24 mb-3"></a>
+                    <p class="text-xs text-center">Alejandro Kovacs</p>
+                </div>
+                <div class="col-span-2 px-2">
+                    <div class="flex flex-col justify-center items-center w-full">
+                        <p class="text-xs text-center">Ante cualquier consulta, propuesta de mejora, error detectado, sugerencia, duda de funcionamiento, por favor, contactarte con el Chat de WhatsApp.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center">
+                    <a href="https://api.whatsapp.com/send?phone=5492616556562&amp;text=Hola, los estoy contactando por INFORMENTAL." target="_blank"><img src="https://web.informental.com.ar/assets/img/qrs/WhatsApp_2.png" alt="WhatsApp2" class="w-24 mb-3"></a>
+                    <p class="text-xs text-center">Pablo Salinas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3 md:mb-0">
+        <div class="card min-h-full flex items-center justify-center">
+            <a href="http://www.informental.com.ar/youtube/youtube.htm" target="_blank" class="h-full hover:underline">
+                <div class="grid grid-cols-3">
+                    <div class="flex items-center justify-center">
+                        <svg class="w-12" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <g>
+                                <path style="fill:#F44336;" d="M490.24,113.92c-13.888-24.704-28.96-29.248-59.648-30.976C399.936,80.864,322.848,80,256.064,80
+                                    c-66.912,0-144.032,0.864-174.656,2.912c-30.624,1.76-45.728,6.272-59.744,31.008C7.36,138.592,0,181.088,0,255.904
+                                    C0,255.968,0,256,0,256c0,0.064,0,0.096,0,0.096v0.064c0,74.496,7.36,117.312,21.664,141.728
+                                    c14.016,24.704,29.088,29.184,59.712,31.264C112.032,430.944,189.152,432,256.064,432c66.784,0,143.872-1.056,174.56-2.816
+                                    c30.688-2.08,45.76-6.56,59.648-31.264C504.704,373.504,512,330.688,512,256.192c0,0,0-0.096,0-0.16c0,0,0-0.064,0-0.096
+                                    C512,181.088,504.704,138.592,490.24,113.92z"></path>
+                                <polygon style="fill:#FAFAFA;" points="192,352 192,160 352,256 	"></polygon>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="col-span-2 flex items-center justify-center">
+                        <div class="flex flex-col justify-center items-center w-full">
+                            <p class="text-xs text-center">Manuales, Tutoriales, Videos Explicativos de como utilizar INFORMENTAL.</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="md:col-span-3 md:mt-3">
+        <div class="card">
+            <div class="flex-1 flex items-center">
+                <p class="text-text-500 text-lg lg:text-xl m-1 font-medium">Trackings</p>
+                
+            </div>
+            <div class="flex flex-col mt-2">
+                <div class="-my-2 overflow-x-auto">
+                    <div class="inline-block min-w-full py-2 align-middle">
+                        <div class="overscroll-contain h-80 border-b border-gray-200 rounded">
+                            <table class="min-w-full overflow-x-scroll divide-y divide-gray-200">
+                                <thead class="bg-table shadow-inner">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-text-500 uppercase">
+                                            Terapia
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-text-500 uppercase">
+                                            Inicio
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-text-500 uppercase">
+                                            Paciente
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-text-500 uppercase">
+                                            Motivo
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-text-500 uppercase">
+                                            Diagnóstico
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-text-500 uppercase">
+                                            Estado
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-text-500 uppercase">
+                                            ACCIONES
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody class="bg-white divide-y divide-gray-100">
+                                                                        <tr class="transition-all hover:bg-hover hover:shadow">
+                                        <td class="px-6 py-2 ">
+                                            <div class="text-sm text-gray-900">
+                                                30</div>
+                                        </td>
+                                        <td class="px-6 py-2 ">
+                                            <div class="text-sm text-gray-900">
+                                                21-09-2023</div>
+                                        </td>
+                                        <td class="px-6 py-2 ">
+                                            <div class="text-sm text-gray-900">
+                                                Prueba 2, Paciente</div>
+                                        </td>
+                                        <td class="px-6 py-2 ">
+                                            <div class="text-sm text-gray-900">
+                                                ñlllññl</div>
+                                        </td>
+                                        <td class="px-6 py-2 ">
+                                            <div class="text-sm text-gray-900">
+                                                l,lmñl,{ñ,ñ,</div>
+                                        </td>
+                                        <td class="px-6 py-2 ">
+                                            <div class="text-sm text-gray-900">
+                                                                                                Activa
+                                                                                            </div>
+                                        </td>
+                                        <td class="flex items-center px-6 py-4">
+                                            <a title="Ver Más" href="https://web.informental.com.ar/therapy/30" class="btn-action-light">
+                                                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                                </svg>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                                                        <tr class="transition-all hover:bg-hover hover:shadow">
+                                        <td class="px-6 py-2 ">
+                                            <div class="text-sm text-gray-900">
+                                                32</div>
+                                        </td>
+                                        <td class="px-6 py-2 ">
+                                            <div class="text-sm text-gray-900">
+                                                21-09-2023</div>
+                                        </td>
+                                        <td class="px-6 py-2 ">
+                                            <div class="text-sm text-gray-900">
+                                                Kovacs, Alejandro</div>
+                                        </td>
+                                        <td class="px-6 py-2 ">
+                                            <div class="text-sm text-gray-900">
+                                                klmkllkm</div>
+                                        </td>
+                                        <td class="px-6 py-2 ">
+                                            <div class="text-sm text-gray-900">
+                                                kjnknkjkj</div>
+                                        </td>
+                                        <td class="px-6 py-2 ">
+                                            <div class="text-sm text-gray-900">
+                                                                                                Inactiva
+                                                                                            </div>
+                                        </td>
+                                        <td class="flex items-center px-6 py-4">
+                                            <a title="Ver Más" href="https://web.informental.com.ar/therapy/32" class="btn-action-light">
+                                                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                                </svg>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+                    </div>
+                </main>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+    
+    <!-- Livewire Scripts -->
+
+<script src="/livewire/livewire.js?id=5cdaa3ec393c09829366" data-turbo-eval="false" data-turbolinks-eval="false"></script>
+<script data-turbo-eval="false" data-turbolinks-eval="false">
+    if (window.livewire) {
+	    console.warn('Livewire: It looks like Livewire\'s @livewireScripts JavaScript assets have already been loaded. Make sure you aren\'t loading them twice.')
+	}
+
+    window.livewire = new Livewire();
+    window.livewire.devTools(true);
+    window.Livewire = window.livewire;
+    window.livewire_app_url = '';
+    window.livewire_token = 'OebQZLyxJBWuNoq12IzXZzPbAwPEtHZuAVxnxZjL';
+
+	/* Make sure Livewire loads first. */
+	if (window.Alpine) {
+	    /* Defer showing the warning so it doesn't get buried under downstream errors. */
+	    document.addEventListener("DOMContentLoaded", function () {
+	        setTimeout(function() {
+	            console.warn("Livewire: It looks like AlpineJS has already been loaded. Make sure Livewire\'s scripts are loaded before Alpine.\\n\\n Reference docs for more info: http://laravel-livewire.com/docs/alpine-js")
+	        })
+	    });
+	}
+
+	/* Make Alpine wait until Livewire is finished rendering to do its thing. */
+    window.deferLoadingAlpine = function (callback) {
+        window.addEventListener('livewire:load', function () {
+            callback();
+        });
+    };
+
+    let started = false;
+
+    window.addEventListener('alpine:initializing', function () {
+        if (! started) {
+            window.livewire.start();
+
+            started = true;
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        if (! started) {
+            window.livewire.start();
+
+            started = true;
+        }
+    });
+</script>
+
+    <script src="https://web.informental.com.ar/vendor/sweetalert/sweetalert.all.js"></script>
+</body>
+
+</html>

@@ -2,23 +2,31 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 // importing bootstrap css
 import "bootstrap/dist/css/bootstrap.min.css";
+import Landing from "./views/Landing/Landing";
+import Home from "./views/Home/Home";
+import Login from "./views/Login/Login";
+import Register from "./views/Register/Register";
+import DetailUser from "./views/DetailUser/DetailUser";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<h1>Landing</h1>} />
-        <Route path="/home" element={<h1>Home</h1>} />
+        <Route path="/" element={<Landing/>} />
+        <Route path="/home" element={<Home/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
+        <Route path="/users/:id" element={<DetailUser/>} />
       </Routes>
 
       {/* 
 
     /
-    /login
-    /register
-    /home
-    /user
-    /users/:id
+    /login: componente, path, html
+    /register: componente, path, html
+    /home: componente, path, html
+    /user ¿No se donde se renderiza?
+    /users/:id : componente, path ¿Tampoco se como se llega a ese endpoint?
     /users/edit-profile
 
 
@@ -36,6 +44,8 @@ function App() {
     /about-us
     
     /export/therapy
+
+    /admin: html
 
     /patient   ruta que pertenece a la aplicacion para pacientes
     
