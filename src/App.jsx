@@ -6,22 +6,23 @@ import Landing from "./views/Landing/Landing";
 import Home from "./views/Home/Home";
 import Login from "./views/Login/Login";
 import Register from "./views/Register/Register";
-import DetailUser from "./views/DetailUser/DetailUser";
+import UserById from "./views/UserById/UserById";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Landing/>} />
-        <Route path="/home" element={<Home/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/users/:id" element={<DetailUser/>} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/users/:id" element={<UserById />} />
       </Routes>
 
       {/* 
 
     /
+    /admin
     /login: componente, path, html
     /register: componente, path, html
     /home: componente, path, html
