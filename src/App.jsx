@@ -20,6 +20,7 @@ function App() {
     /users/:id
     /users/edit-profile
 
+    /patient
 
     /patients
     /patients/:id
