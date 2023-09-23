@@ -1,13 +1,16 @@
-import './App.css'
-import { Route, Routes } from 'react-router-dom'
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
 // importing bootstrap css
-import 'bootstrap/dist/css/bootstrap.min.css';
-function App() {
-  
+import "bootstrap/dist/css/bootstrap.min.css";
 
+function App() {
   return (
     <>
-    {/* 
+      <Routes>
+        <Route path="/" element={<h1>Landing</h1>} />
+        <Route path="/home" element={<h1>Home</h1>} />
+      </Routes>
+      {/* 
     
     /
     /login
@@ -15,9 +18,8 @@ function App() {
     /home
     /user
     /users/:id
-    /user/edit-profile
+    /users/edit-profile
 
-    /patient
 
     /patients
     /patients/:id
@@ -33,10 +35,12 @@ function App() {
     /about-us
     
     /export/therapy
+
+    /patient   ruta que pertenece a la aplicacion para pacientes
     
     */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
