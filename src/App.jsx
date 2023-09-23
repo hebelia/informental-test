@@ -10,8 +10,9 @@ function App() {
         <Route path="/" element={<h1>Landing</h1>} />
         <Route path="/home" element={<h1>Home</h1>} />
       </Routes>
+
       {/* 
-    
+
     /
     /login
     /register
@@ -20,7 +21,6 @@ function App() {
     /users/:id
     /users/edit-profile
 
-    /patient
 
     /patients
     /patients/:id
