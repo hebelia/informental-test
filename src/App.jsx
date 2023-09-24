@@ -8,6 +8,18 @@ import Login from "./views/Login/Login";
 import Register from "./views/Register/Register";
 import UserById from "./views/UserById/UserById";
 import Admin from "./views/Admin/Admin";
+import Users from "./views/Users/Users";
+import EditUserById from "./views/EditUserById/EditUserById";
+import EditProfile from "./views/EditProfile/EditProfile";
+import Patients from "./views/Patients/Patients";
+import CreatePatient from "./views/CreatePatient/CreatePatient";
+import TrackingById from "./views/TrackingById/TrackingById";
+import CreateTracking from "./views/CreateTracking/CreateTracking";
+import Institutions from "./views/Institutions/Institutions";
+import InstitutionById from "./views/InstitutionById/InstitutionById";
+import CreateInstitution from "./views/CreateInstitutions/CreateInstitution";
+import Terms from "./views/Terms/Terms";
+import AboutUs from "./views/AboutUs/AboutUs";
 
 function App() {
   return (
@@ -16,45 +28,45 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
 
-        <Route path="/admin" element={<Admin />} />
-
-        <Route path="/users" element={<UserById />} />
-
-        <Route path="/home" element={<Home />} />
-
         <Route path="/login" element={<Login />} />
 
         <Route path="/register" element={<Register />} />
 
-        <Route path="/users" element={} />
+        <Route path="/admin" element={<Admin />} />
 
-        <Route path="/users/:id" element={<UserById />} />
+        <Route path="/users" element={<Users/>} />
+
+        <Route path="/users/:id" element={<UserById />} />  {/* pagina que solo existe si el usuario existe/ no ha sido eliminado, si no existe el id muestra 404 error */}
+
+        <Route path="/users/:id/edit" element={<EditUserById />} />  {/* si existe el user*/}
+
+        <Route path="/home" element={<Home />} /> 
         
-        <Route path="/edit-profile" element={} />
+        <Route path="/edit-profile" element={<EditProfile />} />
 
-        <Route path="/patients" element={} />
+        <Route path="/patients" element={<Patients/>} />
 
-        <Route path="/patients/:id" element={} />
+        <Route path="/patients/:id" element={<PatientById/>} />
 
-        <Route path="/patients/create" element={} />
+        <Route path="/patients/create" element={<CreatePatient/>} />
 
-        <Route path="/trackings" element={} />
+        <Route path="/trackings" element={<Trackings/>} />
 
-        <Route path="/trackings/:id" element={} />
+        <Route path="/trackings/:id" element={<TrackingById/>} />
 
-        <Route path="/trackings/create" element={} />
+        <Route path="/trackings/create" element={<CreateTracking/>} />
 
-        <Route path="/professionals" element={} />
+        <Route path="/professionals" element={<Professionals />} />
 
-        <Route path="/institutions" element={} />
+        <Route path="/institutions" element={<Institutions/>} />
 
-        <Route path="/institutions/:id" element={} />
+        <Route path="/institutions/:id" element={<InstitutionById/>} />
 
-        <Route path="/institutions/create" element={} />
+        <Route path="/institutions/create" element={<CreateInstitution/>} />
 
-        <Route path="/terms" element={} />
+        <Route path="/terms" element={<Terms/>} />
 
-        <Route path="/about-us" element={} />
+        <Route path="/about-us" element={<AboutUs/>} />
 
       </Routes>
 
@@ -70,6 +82,7 @@ function App() {
     /users/:id : componente, path ¿Tampoco se como se llega a ese endpoint? ✅
     /edit-profile ( previo users/perfil/edit ) ✅
 
+    USERS/PERFIL/EDIT === USERS/:ID/EDIT
 
     /patients ✅
     /patients/:id✅
