@@ -1,7 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 // importing bootstrap css
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Landing from "./views/Landing/Landing";
 import Home from "./views/Home/Home";
@@ -24,6 +23,7 @@ import InstitutionById from "./views/InstitutionById/InstitutionById";
 import CreateInstitution from "./views/CreateInstitution/CreateInstitution";
 import Terms from "./views/Terms/Terms";
 import AboutUs from "./views/AboutUs/AboutUs";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function App() {
   return (
