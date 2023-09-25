@@ -10,6 +10,7 @@ const Login = () => {
         <p> SOY EL BENDITO LOGIN</p>
         <p>Aquí se renderiza: formulario: nombre usuario y contraseña</p>
         <p>Hola!</p>
+        <p>maldito seas rebase</p>
         <form>
           //un cambio
           <div className="form-group">
