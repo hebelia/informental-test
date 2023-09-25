@@ -10,7 +10,9 @@ const Login = () => {
         <p> SOY EL BENDITO LOGIN</p>
         <p>Aquí se renderiza: formulario: nombre usuario y contraseña</p>
         <p>Hola!</p>
+        <p>maldito seas rebase</p>
         <form>
+          //un cambio
           <div className="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
