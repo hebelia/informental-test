@@ -1,6 +1,7 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 // importing bootstrap css
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Landing from "./views/Landing/Landing";
 import Home from "./views/Home/Home";
