@@ -23,6 +23,7 @@ import InstitutionById from "./views/InstitutionById/InstitutionById";
 import CreateInstitution from "./views/CreateInstitution/CreateInstitution";
 import Terms from "./views/Terms/Terms";
 import AboutUs from "./views/AboutUs/AboutUs";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function App() {
   return (
