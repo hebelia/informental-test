@@ -12,12 +12,15 @@ import Users from "./views/Users/Users";
 import EditUserById from "./views/EditUserById/EditUserById";
 import EditProfile from "./views/EditProfile/EditProfile";
 import Patients from "./views/Patients/Patients";
+import PatientById from "./views/PatientById/PatientById";
 import CreatePatient from "./views/CreatePatient/CreatePatient";
+import Trackings from "./views/Trackings/Trackings";
+import Professionals from "./views/Professionals/Professionals";
 import TrackingById from "./views/TrackingById/TrackingById";
 import CreateTracking from "./views/CreateTracking/CreateTracking";
 import Institutions from "./views/Institutions/Institutions";
 import InstitutionById from "./views/InstitutionById/InstitutionById";
-import CreateInstitution from "./views/CreateInstitutions/CreateInstitution";
+import CreateInstitution from "./views/CreateInstitution/CreateInstitution";
 import Terms from "./views/Terms/Terms";
 import AboutUs from "./views/AboutUs/AboutUs";
 
@@ -46,29 +49,35 @@ function App() {
 
         <Route path="/patients" element={<Patients/>} />
 
-        <Route path="/patients/:id" element={<PatientById/>} />
-
         <Route path="/patients/create" element={<CreatePatient/>} />
+
+        <Route path="/patients/:id" element={<PatientById/>} />
 
         <Route path="/trackings" element={<Trackings/>} />
 
-        <Route path="/trackings/:id" element={<TrackingById/>} />
-
         <Route path="/trackings/create" element={<CreateTracking/>} />
+
+        <Route path="/trackings/:id" element={<TrackingById/>} />
 
         <Route path="/professionals" element={<Professionals />} />
 
         <Route path="/institutions" element={<Institutions/>} />
 
-        <Route path="/institutions/:id" element={<InstitutionById/>} />
-
         <Route path="/institutions/create" element={<CreateInstitution/>} />
+
+        <Route path="/institutions/:id" element={<InstitutionById/>} />
 
         <Route path="/terms" element={<Terms/>} />
 
         <Route path="/about-us" element={<AboutUs/>} />
 
       </Routes>
+      
+    </>
+  );
+}
+
+export default App;
 
       {/* 
 
@@ -104,8 +113,3 @@ function App() {
     /patient   ruta que pertenece a la aplicacion para pacientes
     
     */}
-    </>
-  );
-}
-
-export default App;
